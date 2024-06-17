@@ -3,32 +3,12 @@
   "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.persistence\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|solutionrelative:library.persistence\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\common\\mappings\\assemblymappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\common\\mappings\\assemblymappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.persistence\\librarydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|solutionrelative:library.persistence\\librarydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\interfaces\\ilibrarydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\interfaces\\ilibrarydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.persistence\\entitytypeconfigurations\\bookconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|solutionrelative:library.persistence\\entitytypeconfigurations\\bookconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.persistence\\entitytypeconfigurations\\authorconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|solutionrelative:library.persistence\\entitytypeconfigurations\\authorconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55EF690C-8DD9-49D3-8395-184BA28D7D7F}|Library.Domain\\Library.Domain.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.domain\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55EF690C-8DD9-49D3-8395-184BA28D7D7F}|Library.Domain\\Library.Domain.csproj|solutionrelative:library.domain\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55EF690C-8DD9-49D3-8395-184BA28D7D7F}|Library.Domain\\Library.Domain.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.domain\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55EF690C-8DD9-49D3-8395-184BA28D7D7F}|Library.Domain\\Library.Domain.csproj|solutionrelative:library.domain\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\common\\mappings\\imapwith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\common\\mappings\\imapwith.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,73 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DbInitializer.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\DbInitializer.cs",
-              "RelativeDocumentMoniker": "Library.Persistence\\DbInitializer.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\DbInitializer.cs",
-              "RelativeToolTip": "Library.Persistence\\DbInitializer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T19:50:33.94Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LibraryDbContext.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\LibraryDbContext.cs",
-              "RelativeDocumentMoniker": "Library.Persistence\\LibraryDbContext.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\LibraryDbContext.cs",
-              "RelativeToolTip": "Library.Persistence\\LibraryDbContext.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T19:43:20.175Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ILibraryDbContext.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Interfaces\\ILibraryDbContext.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Interfaces\\ILibraryDbContext.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Interfaces\\ILibraryDbContext.cs",
-              "RelativeToolTip": "Library.Application\\Interfaces\\ILibraryDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T19:23:27.54Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Author.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Domain\\Author.cs",
-              "RelativeDocumentMoniker": "Library.Domain\\Author.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Domain\\Author.cs",
-              "RelativeToolTip": "Library.Domain\\Author.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T18:55:19.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Book.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Domain\\Book.cs",
-              "RelativeDocumentMoniker": "Library.Domain\\Book.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Domain\\Book.cs",
-              "RelativeToolTip": "Library.Domain\\Book.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T18:25:28.718Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
@@ -139,28 +54,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BookConfiguration.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\EntityTypeConfigurations\\BookConfiguration.cs",
-              "RelativeDocumentMoniker": "Library.Persistence\\EntityTypeConfigurations\\BookConfiguration.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\EntityTypeConfigurations\\BookConfiguration.cs",
-              "RelativeToolTip": "Library.Persistence\\EntityTypeConfigurations\\BookConfiguration.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAACIAAAAhAAAA",
+              "DocumentIndex": 0,
+              "Title": "AssemblyMappingProfile.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Mappings\\AssemblyMappingProfile.cs",
+              "RelativeDocumentMoniker": "Library.Application\\Common\\Mappings\\AssemblyMappingProfile.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Mappings\\AssemblyMappingProfile.cs",
+              "RelativeToolTip": "Library.Application\\Common\\Mappings\\AssemblyMappingProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T18:21:07.91Z",
+              "WhenOpened": "2024-06-17T20:38:55.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthorConfiguration.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\EntityTypeConfigurations\\AuthorConfiguration.cs",
-              "RelativeDocumentMoniker": "Library.Persistence\\EntityTypeConfigurations\\AuthorConfiguration.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\EntityTypeConfigurations\\AuthorConfiguration.cs",
-              "RelativeToolTip": "Library.Persistence\\EntityTypeConfigurations\\AuthorConfiguration.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACUAAAA5AAAA",
+              "DocumentIndex": 1,
+              "Title": "IMapWith.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Mappings\\IMapWith.cs",
+              "RelativeDocumentMoniker": "Library.Application\\Common\\Mappings\\IMapWith.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Mappings\\IMapWith.cs",
+              "RelativeToolTip": "Library.Application\\Common\\Mappings\\IMapWith.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T18:21:40.222Z",
+              "WhenOpened": "2024-06-17T20:35:14.343Z",
               "EditorCaption": ""
             }
           ]
