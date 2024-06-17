@@ -13,9 +13,10 @@ namespace Library.Domain
         public string Name { get; set; }
         public string Genre { get; set; }
         public string Description { get; set; }
-        public string Author { get; set; }
-        public DateTime TimeOfTake { get; set; }
-        public DateTime TimeOfReturn { get; set; }
+        public Author Author { get; set; }
+        public Guid AuthorId { get; set; }
+        public DateTime? TimeOfTake { get; set; }
+        public DateTime? TimeOfReturn { get; set; }
 
     }
 }

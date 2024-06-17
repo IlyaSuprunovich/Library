@@ -13,5 +13,7 @@ namespace Library.Domain
         public string Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Country { get; set; }
+
+        public ICollection<Book> Books { get; set; }
     }
 }
