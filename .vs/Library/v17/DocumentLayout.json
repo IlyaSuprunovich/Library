@@ -1,40 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbooklist\\getbooklistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbooklist\\getbooklistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbooklist\\getbooklistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbooklist\\getbooklistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbooklist\\booklistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbooklist\\booklistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbooklist\\booklookupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbooklist\\booklookupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbookdetails\\bookdetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbookdetails\\bookdetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbookdetails\\getbookdetailsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbookdetails\\getbookdetailsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbookdetails\\getbookdetailsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbookdetails\\getbookdetailsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\common\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\common\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -42,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -75,110 +42,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetBookListQueryHandler.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQueryHandler.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQueryHandler.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQueryHandler.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQueryHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T23:40:06.991Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetBookListQuery.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T23:38:11.884Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BookListVm.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\BookListVm.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookList\\BookListVm.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\BookListVm.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookList\\BookListVm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T23:37:03.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BookLookupDto.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\BookLookupDto.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookList\\BookLookupDto.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\BookLookupDto.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookList\\BookLookupDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T23:32:41.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GetBookDetailsQueryHandler.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQueryHandler.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQueryHandler.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQueryHandler.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQueryHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T23:17:53.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BookDetailsVm.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookDetails\\BookDetailsVm.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookDetails\\BookDetailsVm.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookDetails\\BookDetailsVm.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookDetails\\BookDetailsVm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAA7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T23:04:46.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GetBookDetailsQuery.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQuery.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQuery.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQuery.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookDetails\\GetBookDetailsQuery.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T23:03:33.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "NotFoundException.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Exceptions\\NotFoundException.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Common\\Exceptions\\NotFoundException.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Exceptions\\NotFoundException.cs",
-              "RelativeToolTip": "Library.Application\\Common\\Exceptions\\NotFoundException.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T21:50:28Z",
-              "EditorCaption": ""
             }
           ]
         }

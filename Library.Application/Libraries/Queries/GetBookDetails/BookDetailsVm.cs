@@ -21,13 +21,13 @@ namespace Library.Application.Libraries.Queries.GetLibraryDetails
         {
             profile.CreateMap<Book, BookDetailsVm>()
                 .ForMember(bookVm => bookVm.ISBN,
-                    x => x.MapFrom(note => note.ISBN))
+                    x => x.MapFrom(book => book.ISBN))
                 .ForMember(bookVm => bookVm.Name,
-                    x => x.MapFrom(note => note.Name))
+                    x => x.MapFrom(book => book.Name))
                 .ForMember(bookVm => bookVm.Genre,
-                    x => x.MapFrom(note => note.Genre))
+                    x => x.MapFrom(book => book.Genre))
                 .ForMember(bookVm => bookVm.Description,
-                    x => x.MapFrom(note => note.Description));
+                    x => x.MapFrom(book => book.Description));
         }
     }
 }

@@ -17,10 +17,10 @@ namespace Library.Application.Libraries.Queries.GetBookList
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Book, BookLookupDto>()
-                .ForMember(noteDto => noteDto.Id,
-                    x => x.MapFrom(note => note.Id))
-                .ForMember(noteDto => noteDto.Name,
-                    x => x.MapFrom(note => note.Name));
+                .ForMember(bookDto => bookDto.Id,
+                    x => x.MapFrom(book => book.Id))
+                .ForMember(bookDto => bookDto.Name,
+                    x => x.MapFrom(book => book.Name));
         }
     }
 }
