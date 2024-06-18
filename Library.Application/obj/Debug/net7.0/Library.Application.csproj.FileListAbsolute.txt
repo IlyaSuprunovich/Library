@@ -1,0 +1,16 @@
+D:\Программирование\Library\Library.Application\bin\Debug\net7.0\Library.Application.deps.json
+D:\Программирование\Library\Library.Application\bin\Debug\net7.0\Library.Application.dll
+D:\Программирование\Library\Library.Application\bin\Debug\net7.0\Library.Application.pdb
+D:\Программирование\Library\Library.Application\bin\Debug\net7.0\Library.Domain.dll
+D:\Программирование\Library\Library.Application\bin\Debug\net7.0\Library.Domain.pdb
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.csproj.AssemblyReference.cache
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.AssemblyInfoInputs.cache
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.AssemblyInfo.cs
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.csproj.CoreCompileInputs.cache
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.sourcelink.json
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library..D137A66B.Up2Date
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.dll
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\refint\Library.Application.dll
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\Library.Application.pdb
+D:\Программирование\Library\Library.Application\obj\Debug\net7.0\ref\Library.Application.dll
