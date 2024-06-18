@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rwao3yzU7IMtG1FVy/FbzbvkVn3ZkZOdxlB4xSPr7EMrtk+zihYk5ArT1lK68rzr+Rrul7IB8+LClLVaCI/o8g==",
+  "dgSpecHash": "ynYeUGM4VCRMJPeVhVQPU1WtlEg6/SuXTVFmnRcWd8GJ6pU+uQuOeb32CCMb5hr+rf0Qpbeg4EN/jzHnMPrRyA==",
   "success": true,
   "projectFilePath": "D:\\Программирование\\Library\\Library.Application\\Library.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\supru\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\supru\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\supru\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.2\\fluentvalidation.dependencyinjectionextensions.11.9.2.nupkg.sha512",
     "C:\\Users\\supru\\.nuget\\packages\\mediatr\\12.3.0\\mediatr.12.3.0.nupkg.sha512",
     "C:\\Users\\supru\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\supru\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",

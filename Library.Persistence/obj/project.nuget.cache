@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "VkYy1Q5PG+oi7JuE7q2VKAKbIoYu2Qi/Gtj+JTiSWB4wA/ApbBar4jY7EY21SlDbU2t/DFNe/Ot+KPouwwPRkA==",
+  "dgSpecHash": "qlZAEocrOtQzvJweu+qIz9T/gl0AGH+29FZXu6thfsOWgeltwn7usnyzn1Onc+77C2zpYtpSZdJnhGOVPDvdig==",
   "success": true,
   "projectFilePath": "D:\\Программирование\\Library\\Library.Persistence\\Library.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\supru\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\supru\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\supru\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.2\\fluentvalidation.dependencyinjectionextensions.11.9.2.nupkg.sha512",
     "C:\\Users\\supru\\.nuget\\packages\\mediatr\\12.3.0\\mediatr.12.3.0.nupkg.sha512",
     "C:\\Users\\supru\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\supru\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",

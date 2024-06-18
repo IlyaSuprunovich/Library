@@ -33,6 +33,10 @@ namespace Library.Persistence.EntityTypeConfigurations
             builder.Property(book => book.Description)
                    .HasMaxLength(300)
                    .IsRequired();
+
+            builder.HasOne(book => book.Author)
+                   .WithMany(author => author.Books)
+                   .HasForeignKey(book => book.AuthorId);
         }
     }
 }

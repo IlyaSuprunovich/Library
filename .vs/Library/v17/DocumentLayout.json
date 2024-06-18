@@ -3,48 +3,16 @@
   "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.persistence\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|solutionrelative:library.persistence\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\models\\createauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\models\\createauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\models\\updateauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\models\\updateauthordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\models\\updatebookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\models\\updatebookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\models\\createbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\models\\createbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\libraries\\queries\\getbooklist\\getbooklistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\libraries\\queries\\getbooklist\\getbooklistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\common\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\common\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -91,144 +59,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthorController.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Controllers\\AuthorController.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Controllers\\AuthorController.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Controllers\\AuthorController.cs",
-              "RelativeToolTip": "Library.WebApi\\Controllers\\AuthorController.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAADwv0oAAAAXAAAA",
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Library.Application\\DependencyInjection.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\DependencyInjection.cs",
+              "RelativeToolTip": "Library.Application\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T20:16:57.818Z",
+              "WhenOpened": "2024-06-18T21:47:56.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "BookController.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Controllers\\BookController.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Controllers\\BookController.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Controllers\\BookController.cs",
-              "RelativeToolTip": "Library.WebApi\\Controllers\\BookController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAqwEwAAAAJAAAA",
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Library.Persistence\\DependencyInjection.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\DependencyInjection.cs",
+              "RelativeToolTip": "Library.Persistence\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T17:57:20.746Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateAuthorDto.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\UpdateAuthorDto.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Models\\UpdateAuthorDto.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\UpdateAuthorDto.cs",
-              "RelativeToolTip": "Library.WebApi\\Models\\UpdateAuthorDto.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAADwvyIAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T20:10:41.96Z",
+              "WhenOpened": "2024-06-18T21:46:43.248Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CreateAuthorDto.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\CreateAuthorDto.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Models\\CreateAuthorDto.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\CreateAuthorDto.cs",
-              "RelativeToolTip": "Library.WebApi\\Models\\CreateAuthorDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA1AAAA",
+              "Title": "ValidationBehavior.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
+              "RelativeDocumentMoniker": "Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
+              "RelativeToolTip": "Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T20:10:23.404Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UpdateBookDto.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\UpdateBookDto.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Models\\UpdateBookDto.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\UpdateBookDto.cs",
-              "RelativeToolTip": "Library.WebApi\\Models\\UpdateBookDto.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAiwCMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T18:24:32.808Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateBookDto.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\CreateBookDto.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Models\\CreateBookDto.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Models\\CreateBookDto.cs",
-              "RelativeToolTip": "Library.WebApi\\Models\\CreateBookDto.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAQwAsAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T18:10:06.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GetBookListQuery.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "RelativeToolTip": "Library.Application\\Libraries\\Queries\\GetBookList\\GetBookListQuery.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T18:00:32.325Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Controllers\\BaseController.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Controllers\\BaseController.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Controllers\\BaseController.cs",
-              "RelativeToolTip": "Library.WebApi\\Controllers\\BaseController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T17:44:22.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\appsettings.json",
-              "RelativeDocumentMoniker": "Library.WebApi\\appsettings.json",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\appsettings.json",
-              "RelativeToolTip": "Library.WebApi\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-18T17:14:40.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Startup.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Startup.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Startup.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Startup.cs",
-              "RelativeToolTip": "Library.WebApi\\Startup.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAgwBoAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T17:05:33.826Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "Library.WebApi\\Program.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Program.cs",
-              "RelativeToolTip": "Library.WebApi\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T16:46:48.077Z",
+              "WhenOpened": "2024-06-18T21:36:22.169Z",
               "EditorCaption": ""
             }
           ]
