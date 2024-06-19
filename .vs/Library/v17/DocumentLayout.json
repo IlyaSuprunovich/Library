@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.persistence\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF757437-5331-4D27-8C58-EA624EF6B880}|Library.Persistence\\Library.Persistence.csproj|solutionrelative:library.persistence\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\middleware\\customexceptionhandlermiddlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\middleware\\customexceptionhandlermiddlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.application\\common\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD772CF6-2670-4E5A-A136-8339A822E02D}|Library.Application\\Library.Application.csproj|solutionrelative:library.application\\common\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|d:\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\library\\library.webapi\\middleware\\customexceptionhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1FC9C56-D417-448E-ACEF-FD411D9A4212}|Library.WebApi\\Library.WebApi.csproj|solutionrelative:library.webapi\\middleware\\customexceptionhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,40 +59,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Library.Application\\DependencyInjection.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\DependencyInjection.cs",
-              "RelativeToolTip": "Library.Application\\DependencyInjection.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAArAAAA",
+              "Title": "Startup.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Startup.cs",
+              "RelativeDocumentMoniker": "Library.WebApi\\Startup.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Startup.cs",
+              "RelativeToolTip": "Library.WebApi\\Startup.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAA5wDEAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T21:47:56.58Z",
+              "WhenOpened": "2024-06-19T13:03:31.351Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Library.Persistence\\DependencyInjection.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Persistence\\DependencyInjection.cs",
-              "RelativeToolTip": "Library.Persistence\\DependencyInjection.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "CustomExceptionHandlerMiddlewareExtensions.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Middleware\\CustomExceptionHandlerMiddlewareExtensions.cs",
+              "RelativeDocumentMoniker": "Library.WebApi\\Middleware\\CustomExceptionHandlerMiddlewareExtensions.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Middleware\\CustomExceptionHandlerMiddlewareExtensions.cs",
+              "RelativeToolTip": "Library.WebApi\\Middleware\\CustomExceptionHandlerMiddlewareExtensions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T21:46:43.248Z",
+              "WhenOpened": "2024-06-19T13:01:33.707Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ValidationBehavior.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "RelativeDocumentMoniker": "Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "RelativeToolTip": "Library.Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAkAAAA",
+              "Title": "CustomExceptionHandlerMiddleware.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Middleware\\CustomExceptionHandlerMiddleware.cs",
+              "RelativeDocumentMoniker": "Library.WebApi\\Middleware\\CustomExceptionHandlerMiddleware.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\\Library\\Library.WebApi\\Middleware\\CustomExceptionHandlerMiddleware.cs",
+              "RelativeToolTip": "Library.WebApi\\Middleware\\CustomExceptionHandlerMiddleware.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T21:36:22.169Z",
+              "WhenOpened": "2024-06-19T12:49:37.31Z",
               "EditorCaption": ""
             }
           ]

@@ -2,6 +2,7 @@
 using Library.Application.Common.Mappings;
 using Library.Application.Interfaces;
 using Library.Persistence;
+using Library.WebApi.Middleware;
 using System.Reflection;
 
 namespace Library.WebApi
@@ -46,6 +47,7 @@ namespace Library.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCustomExceptionHandler();
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
