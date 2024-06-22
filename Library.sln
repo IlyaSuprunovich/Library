@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Persistence", "Libr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.WebApi", "Library.WebApi\Library.WebApi.csproj", "{B1FC9C56-D417-448E-ACEF-FD411D9A4212}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Tests", "Library.Tests\Library.Tests.csproj", "{A84AE85F-CC86-46AA-863A-E874EB77BC14}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CD772CF6-2670-4E5A-A136-8339A822E02D} = {CD772CF6-2670-4E5A-A136-8339A822E02D}
+		{CF757437-5331-4D27-8C58-EA624EF6B880} = {CF757437-5331-4D27-8C58-EA624EF6B880}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +47,10 @@ Global
 		{B1FC9C56-D417-448E-ACEF-FD411D9A4212}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1FC9C56-D417-448E-ACEF-FD411D9A4212}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1FC9C56-D417-448E-ACEF-FD411D9A4212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A84AE85F-CC86-46AA-863A-E874EB77BC14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A84AE85F-CC86-46AA-863A-E874EB77BC14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A84AE85F-CC86-46AA-863A-E874EB77BC14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A84AE85F-CC86-46AA-863A-E874EB77BC14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +60,7 @@ Global
 		{CD772CF6-2670-4E5A-A136-8339A822E02D} = {BCD35544-7826-4A8C-8678-41B6D0629D3F}
 		{CF757437-5331-4D27-8C58-EA624EF6B880} = {6548E4F8-4C95-45C1-B80A-79876EF3B5C9}
 		{B1FC9C56-D417-448E-ACEF-FD411D9A4212} = {CE23F0A2-7311-4849-BD82-21F6FA302DAB}
+		{A84AE85F-CC86-46AA-863A-E874EB77BC14} = {79154077-D62C-4830-8626-5EFDCF7D5FA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB817FE9-1066-4158-A217-FF783AA6EE81}

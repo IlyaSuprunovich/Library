@@ -14,6 +14,7 @@ namespace Library.Persistence
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options) 
             : base(options) { }
@@ -22,6 +23,7 @@ namespace Library.Persistence
         {
             builder.ApplyConfiguration(new AuthorConfiguration());
             builder.ApplyConfiguration(new BookConfiguration());
+            builder.ApplyConfiguration(new ImageConfiguration());
 
             base.OnModelCreating(builder);
         }

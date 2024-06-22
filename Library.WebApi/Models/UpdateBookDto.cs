@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Library.Application.Commands.CreateBook;
-using Library.Application.Commands.UpdateBook;
+using Library.Application.Libraries.Commands.Book.CreateBook;
 using Library.Application.Common.Mappings;
+using Library.Application.Libraries.Commands.Book.UpdateBook;
 using Library.Domain;
 
 namespace Library.WebApi.Models

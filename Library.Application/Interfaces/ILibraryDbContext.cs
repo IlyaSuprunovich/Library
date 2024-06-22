@@ -12,6 +12,7 @@ namespace Library.Application.Interfaces
     {
         DbSet<Book> Books { get; set; }
         DbSet<Author> Authors { get; set;}
+        DbSet<Image> Images { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

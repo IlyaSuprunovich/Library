@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Library.Application.Common.Mappings;
-using Library.Application.Libraries.Commands.CreateAuthor;
-using Library.Application.Libraries.Commands.UpdateAuthor;
+using Library.Application.Libraries.Commands.Author.CreateAuthor;
+using Library.Application.Libraries.Commands.Author.UpdateAuthor;
 using Library.Domain;
 
 namespace Library.WebApi.Models
@@ -12,7 +12,7 @@ namespace Library.WebApi.Models
         public string Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Country { get; set; }
-        public ICollection<Book> Books { get; set; }
+        //public ICollection<Book> Books { get; set; }
 
         public void Mapping(Profile profile)
         {
@@ -24,9 +24,9 @@ namespace Library.WebApi.Models
                 .ForMember(authorCommand => authorCommand.DateOfBirth,
                     x => x.MapFrom(authorDto => authorDto.DateOfBirth))
                 .ForMember(authorCommand => authorCommand.Country,
-                    x => x.MapFrom(authorDto => authorDto.Country))
-                .ForMember(authorCommand => authorCommand.Books,
-                    x => x.MapFrom(authorDto => authorDto.Books));
+                    x => x.MapFrom(authorDto => authorDto.Country));
+                /*.ForMember(authorCommand => authorCommand.Books,
+                    x => x.MapFrom(authorDto => authorDto.Books));*/
         }
     }
 }

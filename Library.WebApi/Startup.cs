@@ -3,6 +3,7 @@ using Library.Application.Common.Mappings;
 using Library.Application.Interfaces;
 using Library.Persistence;
 using Library.WebApi.Middleware;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Reflection;
 
 namespace Library.WebApi
@@ -38,6 +39,25 @@ namespace Library.WebApi
                     policy.AllowAnyOrigin();
                 });
             });
+
+            services.AddAuthentication(config =>
+            {
+                config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                    .AddJwtBearer("Bearer", options =>
+                    {
+                        options.Authority = "https://localhost:7102/";
+                        options.Audience = "LibraryWebAPI";
+                        options.RequireHttpsMetadata = false;
+                    });
+
+            services.AddSwaggerGen(config =>
+            {
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                config.IncludeXmlComments(xmlPath);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,11 +66,19 @@ namespace Library.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(config =>
+            {
+                config.RoutePrefix = string.Empty;
+                config.SwaggerEndpoint("swagger/v1/swagger.json", "Library API");
+            });
             app.UseCustomExceptionHandler();
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
