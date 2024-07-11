@@ -3,15 +3,10 @@ using AutoMapper.QueryableExtensions;
 using Library.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Queries.Book.GetBookList
 {
-    public class GetBookListQueryHandler : IRequestHandler<GetBookListQuery, BookListVm>
+    public class GetBookListQueryHandler : IRequestHandler<GetBookListQuery, PagedResponse<BookLookupDto>>
     {
         private readonly ILibraryDbContext _libraryDbContext;
         private readonly IMapper _mapper;
@@ -22,13 +17,26 @@ namespace Library.Application.Libraries.Queries.Book.GetBookList
             _mapper = mapper;
         }
 
-        public async Task<BookListVm> Handle(GetBookListQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResponse<BookLookupDto>> Handle(GetBookListQuery request, CancellationToken cancellationToken)
         {
-            var booksQuery = await _libraryDbContext.Books
-                //.Where(book => book.AuthorId == request.AuthorId)
-                .ProjectTo<BookLookupDto>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
-            return new BookListVm { Books = booksQuery };
+            IQueryable<BookLookupDto> query = _libraryDbContext.Books
+                .Where(b => (request.Genre == null || b.Genre == request.Genre) &&
+                        (request.Name == null || b.Name.Contains(request.Name)))
+                .ProjectTo<BookLookupDto>(_mapper.ConfigurationProvider);
+
+            int totalRecords = await query.CountAsync(cancellationToken);
+
+            if (request.PageNumber != null && request.PageSize != null)
+            {
+                query = query
+                    .Skip((request.PageNumber.Value - 1) * request.PageSize.Value)
+                    .Take(request.PageSize.Value);
+            }
+
+            List<BookLookupDto> books = await query.ToListAsync(cancellationToken);
+
+            return new PagedResponse<BookLookupDto>(books, request.PageNumber ?? 1, 
+                request.PageSize ?? totalRecords, totalRecords);
         }
     }
 }

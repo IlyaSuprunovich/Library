@@ -43,6 +43,18 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
             RuleFor(updateBookCommand =>
                 updateBookCommand.AuthorId)
                 .NotEqual(Guid.Empty);
+
+            RuleFor(updateBookCommand =>
+                updateBookCommand.CountBook)
+                .NotEmpty();
+
+            RuleFor(updateBookCommand =>
+                updateBookCommand.Image)
+                .NotEmpty();
+
+            RuleFor(updateBookCommand =>
+                updateBookCommand.ImageId)
+                .NotEqual(Guid.Empty);
         }
     }
 }

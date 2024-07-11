@@ -2,12 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Persistence
 {
@@ -16,16 +10,18 @@ namespace Library.Persistence
         public static IServiceCollection AddPersistence(this IServiceCollection services, 
             IConfiguration configuration)
         {
-            var connectionString = configuration["DbConnection"];
-            
+            string? connectionStringLibrary = configuration.GetConnectionString("DbConnection");
+
+            Console.WriteLine($"Library Connection String: {connectionStringLibrary}");
+
+
             services.AddDbContext<LibraryDbContext>(options =>
             {
-                MySqlServerVersion version = new(new Version("8.0.34"));
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                options.UseMySql(connectionStringLibrary, 
+                    ServerVersion.AutoDetect(connectionStringLibrary));
             });
 
-            services.AddScoped<ILibraryDbContext>(provider =>
-                provider.GetService<LibraryDbContext>());
+            services.AddScoped<ILibraryDbContext>(provider => provider.GetService<LibraryDbContext>());
 
             return services;
         }

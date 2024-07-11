@@ -1,10 +1,4 @@
 ﻿using FluentValidation;
-using Library.Application.Libraries.Commands.Book.UpdateBook;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Commands.Book.TakeBook
 {
@@ -12,11 +6,13 @@ namespace Library.Application.Libraries.Commands.Book.TakeBook
     {
         public TakeBookCommandValidator()
         {
-            RuleFor(updateBookCommand =>
-                updateBookCommand.Id)
+            RuleFor(takeBookCommand =>
+                takeBookCommand.Id)
                 .NotEqual(Guid.Empty);
 
-
+            RuleFor(takeBookCommand =>
+                takeBookCommand.LibraryUserId)
+                .NotEqual(Guid.Empty);
         }
     }
 }

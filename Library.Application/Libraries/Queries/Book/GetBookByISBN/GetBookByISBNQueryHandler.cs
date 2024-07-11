@@ -1,15 +1,8 @@
 ﻿using AutoMapper;
 using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
-using Library.Application.Libraries.Queries;
-using Library.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Queries.Book.GetBookByISBN
 {
@@ -26,11 +19,11 @@ namespace Library.Application.Libraries.Queries.Book.GetBookByISBN
 
         public async Task<BookByISBNVm> Handle(GetBookByISBNQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _libraryDbContext.Books
+            Domain.Book? entity = await _libraryDbContext.Books
                 .FirstOrDefaultAsync(book =>
                 book.ISBN == request.ISBN);
 
-            if (entity == null /*|| entity.AuthorId != request.AuthorId*/)
+            if (entity == null)
             {
                 throw new NotFoundException(nameof(Book), request.ISBN);
             }

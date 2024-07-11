@@ -1,12 +1,6 @@
-﻿using Library.Application.Libraries.Commands.Book.CreateBook;
-using Library.Application.Interfaces;
-using Library.Domain;
+﻿using Library.Application.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Commands.Author.CreateAuthor
 {
@@ -19,9 +13,19 @@ namespace Library.Application.Libraries.Commands.Author.CreateAuthor
 
         public async Task<Guid> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
         {
+            Domain.Author? author = await _libraryDbContext.Authors.FirstOrDefaultAsync(author =>
+                author.Name == request.Name &&
+                author.Surname == request.Surname &&
+                author.Country == request.Country &&
+                author.DateOfBirth == request.DateOfBirth);
 
-            Domain.Author author = new()
+            if(author != null)
+                return author.Id;
+
+
+            Domain.Author newAuthor = new()
             {
+                Id = Guid.NewGuid(),
                 Name = request.Name,
                 Surname = request.Surname,
                 DateOfBirth = request.DateOfBirth,
@@ -29,10 +33,10 @@ namespace Library.Application.Libraries.Commands.Author.CreateAuthor
                 Books = request.Books
             };
 
-            await _libraryDbContext.Authors.AddAsync(author, cancellationToken);
+            await _libraryDbContext.Authors.AddAsync(newAuthor, cancellationToken);
             await _libraryDbContext.SaveChangesAsync(cancellationToken);
 
-            return author.Id;
+            return newAuthor.Id;
         }
     }
 }

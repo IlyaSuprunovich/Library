@@ -3,11 +3,6 @@ using Library.Application.Libraries.Queries.Book.GetBookDetails;
 using Library.Persistence;
 using Library.Tests.Common;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Tests.Libraries.Queries.Book
 {
@@ -27,18 +22,17 @@ namespace Library.Tests.Libraries.Queries.Book
         public async Task GetBookDetailsQueryHandler_Success()
         {
             //Arrange
-            var handler = new GetBookDetailsQueryHandler(_context, _mapper);
+            var handler = new GetBookByIdQueryHandler(_context, _mapper);
 
             //Act
             var result = await handler.Handle(
-                new GetBookDetailsQuery
+                new GetBookByIdQuery
                 {
-                    AuthorId = LibraryContextFactory.Id_B,
                     Id = Guid.Parse("58dc909b-7f4a-4d4c-85e1-01a510780111")
                 }, CancellationToken.None);
 
             //Assert
-            result.ShouldBeOfType<BookDetailsVm>();
+            result.ShouldBeOfType<BookVm>();
             result.ISBN.ShouldBe("9876543219876");
             result.Name.ShouldBe("Name2");
             result.Genre.ShouldBe("Genre2");

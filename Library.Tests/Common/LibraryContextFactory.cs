@@ -1,11 +1,6 @@
 ﻿using Library.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Library.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Tests.Common
 {
@@ -53,7 +48,6 @@ namespace Library.Tests.Common
                             },
                             AuthorId = Guid.Parse("99dc9090-26e4-45ac-8934-5aa052858123"),
                             IsBookInLibrary = true,
-                            NumberReaderTicket = null,
                             TimeOfTake = null,
                             TimeOfReturn = null,
                             Image = null,
@@ -77,7 +71,6 @@ namespace Library.Tests.Common
                     },
                     AuthorId = Guid.Parse("89dc9090-26e4-45ac-8934-5aa052858123"),
                     IsBookInLibrary = true,
-                    NumberReaderTicket = null,
                     TimeOfTake = null,
                     TimeOfReturn = null,
                     Image = null,
@@ -99,7 +92,6 @@ namespace Library.Tests.Common
                     },
                     AuthorId = Guid.Parse("11dc909b-7f4a-4d4c-85e1-01a510780111"),
                     IsBookInLibrary = true,
-                    NumberReaderTicket = null,
                     TimeOfTake = null,
                     TimeOfReturn = null,
                     Image = null,
@@ -121,7 +113,6 @@ namespace Library.Tests.Common
                     },
                     AuthorId = Guid.Parse("42dc909b-7f4a-4d4c-85e1-01a510780666"),
                     IsBookInLibrary = true,
-                    NumberReaderTicket = null,
                     TimeOfTake = null,
                     TimeOfReturn = null,
                     Image = null,
@@ -143,7 +134,6 @@ namespace Library.Tests.Common
                     },
                     AuthorId = Guid.Parse("05dc909b-7f4a-4d4c-85e1-01a510780753"),
                     IsBookInLibrary = true,
-                    NumberReaderTicket = null,
                     TimeOfTake = null,
                     TimeOfReturn = null,
                     Image = null,

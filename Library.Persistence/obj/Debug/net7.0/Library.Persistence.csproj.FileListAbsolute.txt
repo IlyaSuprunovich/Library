@@ -1,4 +1,5 @@
 D:\Программирование\Library\Library.Persistence\bin\Debug\net7.0\Library.Persistence.deps.json
+D:\Программирование\Library\Library.Persistence\bin\Debug\net7.0\Library.Persistence.runtimeconfig.json
 D:\Программирование\Library\Library.Persistence\bin\Debug\net7.0\Library.Persistence.dll
 D:\Программирование\Library\Library.Persistence\bin\Debug\net7.0\Library.Persistence.pdb
 D:\Программирование\Library\Library.Persistence\bin\Debug\net7.0\Library.Application.dll
@@ -15,4 +16,5 @@ D:\Программирование\Library\Library.Persistence\obj\Debug\net7.0
 D:\Программирование\Library\Library.Persistence\obj\Debug\net7.0\Library.Persistence.dll
 D:\Программирование\Library\Library.Persistence\obj\Debug\net7.0\refint\Library.Persistence.dll
 D:\Программирование\Library\Library.Persistence\obj\Debug\net7.0\Library.Persistence.pdb
+D:\Программирование\Library\Library.Persistence\obj\Debug\net7.0\Library.Persistence.genruntimeconfig.cache
 D:\Программирование\Library\Library.Persistence\obj\Debug\net7.0\ref\Library.Persistence.dll

@@ -48,7 +48,5 @@ namespace Library.Tests.Libraries.Commands.Book
                 book.Description == bookDescription && book.ISBN == bookISBN &&
                 book.Genre == bookGenre && book.Author == bookAuthor && book.AuthorId == bookAuthorId));
         }
-
-
     }
 }

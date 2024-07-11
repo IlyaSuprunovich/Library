@@ -28,8 +28,8 @@ namespace Library.WebApi.Middleware
 
         private Task HandleExcrptionAsync(HttpContext context, Exception ex)
         {
-            var code = HttpStatusCode.InternalServerError;
-            var result = string.Empty;
+            HttpStatusCode code = HttpStatusCode.InternalServerError;
+            string result = string.Empty;
             switch (ex)
             {
                 case ValidationException validationException:

@@ -1,10 +1,4 @@
-﻿using Library.Domain;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Library.Application.Libraries.Commands.Author.CreateAuthor
 {
@@ -14,6 +8,6 @@ namespace Library.Application.Libraries.Commands.Author.CreateAuthor
         public string Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Country { get; set; }
-        public ICollection<Domain.Book> Books { get; set; }
+        public ICollection<Domain.Book>? Books { get; set; }
     }
 }

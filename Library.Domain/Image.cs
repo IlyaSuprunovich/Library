@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Library.Domain
+﻿namespace Library.Domain
 {
     public class Image
     {
@@ -12,7 +6,7 @@ namespace Library.Domain
         public string FileName { get; set; }
         public byte[] Data { get; set; }
         public string ContentType { get; set; }
-        public virtual Book Book { get; set; }
-        public Guid BookId { get; set; }
+        public virtual Book? Book { get; set; }
+        public Guid? BookId { get; set; }
     }
 }

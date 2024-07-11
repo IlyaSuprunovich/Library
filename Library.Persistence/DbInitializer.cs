@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Library.Persistence
+﻿namespace Library.Persistence
 {
     public class DbInitializer
     {
-        public static void Initialize(LibraryDbContext context)
+        public static void Initialize(LibraryDbContext libraryDbContext)
         {
-            context.Database.EnsureCreated();
+            libraryDbContext.Database.EnsureCreated();
         }
     }
 }

@@ -1,4 +1,3 @@
-
 using Library.Persistence;
 
 namespace Library.WebApi
@@ -11,15 +10,17 @@ namespace Library.WebApi
 
             using (var scope = host.Services.CreateScope())
             {
-                var serviceProvider = scope.ServiceProvider;
+                var serviceProvider = scope.ServiceProvider; 
                 try
                 {
-                    var context = serviceProvider.GetRequiredService<LibraryDbContext>();
-                    DbInitializer.Initialize(context);
+                    var libraryDbContext = serviceProvider.GetRequiredService<LibraryDbContext>();
+
+                    DbInitializer.Initialize(libraryDbContext);
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    Console.WriteLine(ex.StackTrace);
                 }
             }
 

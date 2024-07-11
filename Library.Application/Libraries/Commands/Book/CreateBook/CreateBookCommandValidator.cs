@@ -1,10 +1,4 @@
 ﻿using FluentValidation;
-using Library.Application.Libraries.Commands.Author.CreateAuthor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Commands.Book.CreateBook
 {
@@ -31,10 +25,6 @@ namespace Library.Application.Libraries.Commands.Book.CreateBook
                 createBookCommand.Description)
                 .NotEmpty()
                 .MaximumLength(300);
-
-            RuleFor(createBookCommand =>
-                createBookCommand.Author)
-                .NotEmpty();
 
             RuleFor(createBookCommand =>
                 createBookCommand.AuthorId)

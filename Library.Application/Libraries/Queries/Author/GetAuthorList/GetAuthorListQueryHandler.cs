@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Library.Application.Interfaces;
-using Library.Application.Libraries.Queries;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Queries.Author.GetAuthorList
 {
@@ -25,8 +19,7 @@ namespace Library.Application.Libraries.Queries.Author.GetAuthorList
 
         public async Task<AuthorListVm> Handle(GetAuthorListQuery request, CancellationToken cancellationToken)
         {
-            var booksQuery = await _libraryDbContext.Authors
-                //.Where(author => author.Id == request.Id)
+            List<AuthorLookupDto> booksQuery = await _libraryDbContext.Authors
                 .ProjectTo<AuthorLookupDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
             return new AuthorListVm { Authors = booksQuery };

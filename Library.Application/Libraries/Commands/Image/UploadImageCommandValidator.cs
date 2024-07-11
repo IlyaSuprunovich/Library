@@ -13,11 +13,13 @@ namespace Library.Application.Libraries.Commands.Image
     {
         public UploadImageCommandValidator()
         {
-            /*RuleFor(updateBookCommand =>
-                updateBookCommand.File)
-                .NotEmpty();*/
+            RuleFor(uploadImageCommand =>
+                uploadImageCommand.File)
+                .NotEmpty();
 
-            
+            RuleFor(uploadImageCommand =>
+               uploadImageCommand.BookId)
+               .NotEqual(Guid.Empty);
         }
     }
 }

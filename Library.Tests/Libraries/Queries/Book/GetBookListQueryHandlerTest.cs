@@ -3,11 +3,6 @@ using Library.Application.Libraries.Queries.Book.GetBookList;
 using Library.Persistence;
 using Library.Tests.Common;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Tests.Libraries.Queries.Book
 {
@@ -31,14 +26,11 @@ namespace Library.Tests.Libraries.Queries.Book
 
             //Act
             var result = await handler.Handle(
-                new GetBookListQuery
-                {
-                    AuthorId = LibraryContextFactory.Id_B
-                }, CancellationToken.None);
+                new GetBookListQuery(), CancellationToken.None);
 
             //Assert
-            result.ShouldBeOfType<BookListVm>();
-            result.Books.Count.ShouldBe(14);
+            result.ShouldBeOfType<PagedResponse<BookLookupDto>>();
+            result.Data.ToList().Count.ShouldBe(15);
         }
 
     }

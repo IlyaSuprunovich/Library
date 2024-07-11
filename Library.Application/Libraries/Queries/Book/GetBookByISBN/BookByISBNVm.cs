@@ -1,12 +1,5 @@
 ﻿using AutoMapper;
 using Library.Application.Common.Mappings;
-using Library.Application.Libraries.Queries;
-using Library.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Queries.Book.GetBookByISBN
 {

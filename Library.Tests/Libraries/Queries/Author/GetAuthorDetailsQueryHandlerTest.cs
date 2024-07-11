@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
 using Library.Application.Libraries.Queries.Author.GetAuthorDetails;
-using Library.Application.Libraries.Queries.Book.GetBookDetails;
 using Library.Persistence;
 using Library.Tests.Common;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Tests.Libraries.Queries.Author
 {
@@ -28,17 +22,17 @@ namespace Library.Tests.Libraries.Queries.Author
         public async Task GetAuthorDetailsQueryHandler_Success()
         {
             //Arrange
-            var handler = new GetAuthorDetailsQueryHandler(_context, _mapper);
+            var handler = new GetAuthorByIdQueryHandler(_context, _mapper);
 
             //Act
             var result = await handler.Handle(
-                new GetAuthorDetailsQuery
+                new GetAuthorByIdQuery
                 {
                     Id = Guid.Parse("17dc9090-26e4-45ac-8934-5aa052858555")
                 }, CancellationToken.None);
 
             //Assert
-            result.ShouldBeOfType<AuthorDetailsVm>();
+            result.ShouldBeOfType<AuthorVm>();
             result.Id.ShouldBe(Guid.Parse("17dc9090-26e4-45ac-8934-5aa052858555"));
             result.Name.ShouldBe("Name1");
             result.Surname.ShouldBe("Surname1");

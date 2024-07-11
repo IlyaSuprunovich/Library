@@ -1,12 +1,6 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Libraries.Commands.Author.DeleteAuthor;
-using Library.Application.Libraries.Commands.Book.DeleteBook;
 using Library.Tests.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Tests.Libraries.Commands.Author
 {

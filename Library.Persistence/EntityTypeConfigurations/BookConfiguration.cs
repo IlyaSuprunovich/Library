@@ -1,11 +1,6 @@
 ﻿using Library.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Persistence.EntityTypeConfigurations
 {
@@ -37,9 +32,6 @@ namespace Library.Persistence.EntityTypeConfigurations
             builder.Property(book => book.IsBookInLibrary)
                    .HasDefaultValue(true);
 
-            builder.Property(book => book.NumberReaderTicket)
-                   .HasDefaultValue(null);
-
             builder.Property(book => book.TimeOfTake)
                    .HasDefaultValue(null);
 
@@ -56,103 +48,131 @@ namespace Library.Persistence.EntityTypeConfigurations
             builder.HasOne(book => book.Image)
                    .WithOne(image => image.Book)
                    .HasForeignKey<Book>(book => book.ImageId)
-                   .IsRequired()
                    .OnDelete(DeleteBehavior.Cascade);
 
-            
+            builder.HasOne(book => book.LibraryUser)
+                   .WithMany(user => user.TakenBooks)
+                   .HasForeignKey(book => book.LibraryUserId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
-            //Set initial data
             builder.HasData(
-               new Book
-               {
-                   Id = new Guid("14ca202e-dfb4-4d97-b7ef-76cf510bf319"),
-                   Name = "War and Peace",
-                   //Author = "Lev Tolstoy",
-                   AuthorId = new Guid("4dc4b580-7fb5-4c2a-938a-7e464116c7dd"),
-                   ISBN = "9781566190275",
-                   Genre = "Novel",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("2f346383-bd6a-4564-8dce-343c355e795a"),
-                   Name = "Anna Karenina",
-                   //AuthorName = "Lev Tolstoy",
-                   AuthorId = new Guid("4dc4b580-7fb5-4c2a-938a-7e464116c7dd"),
-                   ISBN = "9780672523830",
-                   Genre = "Novel",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("ad9c4dbe-5dff-43e0-a58c-cea9327a4464"),
-                   Name = "Old Izergil",
-                   //AuthorName = "Maxim Gorkiy",
-                   AuthorId = new Guid("21cb29da-047a-4d85-a581-8ef6cffec67f"),
-                   ISBN = "9798390533352",
-                   Genre = "Friction",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("f31001c4-fb5d-42f0-aafd-dd0e6e08476e"),
-                   Name = "Ascendance of a bookworm",
-                   ///AuthorName = "Miya Kazuki",
-                   AuthorId = new Guid("3bc8f089-2d00-4346-af71-d9f9fcdceb20"),
-                   ISBN = "9781718357976",
-                   Genre = "Friction",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("6328fcf9-5846-4f7c-960c-da5ea5c32f22"),
-                   Name = "Crime and Punishment",
-                   //AuthorName = "Fedor Dostoyevskiy",
-                   AuthorId = new Guid("188ec0f1-b4a1-4a86-9bb4-f249c2a1032b"),
-                   ISBN = "9785050000149",
-                   Genre = "Novel",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("424e64e8-c811-42ef-8153-f7952ced8c51"),
-                   Name = "The Brothers Karamazov",
-                   //AuthorName = "Fedor Dostoyevskiy",
-                   AuthorId = new Guid("188ec0f1-b4a1-4a86-9bb4-f249c2a1032b"),
-                   ISBN = "0374528373",
-                   Genre = "Novel",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("81ebde25-7b81-4bf2-8691-edef624642d8"),
-                   Name = "Dead souls",
-                   //AuthorName = "Nikolay Gogol",
-                   AuthorId = new Guid("ec891ac2-f620-415f-9f86-3d15259eb071"),
-                   ISBN = "0300060998",
-                   Genre = "Satire",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("8e32b21e-1a32-4272-bc46-6f7b709a7696"),
-                   Name = "Romeo and Juliet",
-                   //AuthorName = "William Shakespeare",
-                   AuthorId = new Guid("4792ce31-a3e8-4df3-b0d7-4ea1c8e40dbd"),
-                   ISBN = "9780671722852",
-                   Genre = "Shakespearean tragedy",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               },
-               new Book
-               {
-                   Id = new Guid("a0283873-60b8-45de-a411-02a0a3fbc465"),
-                   Name = "Alpine Ballad",
-                   //AuthorName = "Vasil Bykov",
-                   AuthorId = new Guid("ac31fda2-411c-4669-8e42-b4b18cc659cb"),
-                   ISBN = "9781909156821",
-                   Genre = "War novel",
-                   Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius rhoncus nisl, nec egestas lacus pellentesque vitae. Donec eleifend urna at nunc tincidunt facilisis. Nam consectetur odio erat sed."
-               }
+                new Book
+                {
+                    Id = new Guid("e2a6d4fd-8c3a-4b89-9fe7-9c80d9d5e9c2"),
+                    Name = "War and Peace",
+                    AuthorId = new Guid("5ab71203-e9c7-42f3-905f-63c780c12611"),
+                    ISBN = "9781566190275",
+                    Genre = "Novel",
+                    Description = "A novel that intertwines the lives of private and public" +
+                    " individuals during the time of the Napoleonic wars.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c11")
+                },
+                new Book
+                {
+                    Id = new Guid("1a7d9b8d-6c8f-4db0-8d7b-9d9b7c0f7c2d"),
+                    Name = "Anna Karenina",
+                    AuthorId = new Guid("5ab71203-e9c7-42f3-905f-63c780c12611"),
+                    ISBN = "9780143035008",
+                    Genre = "Novel",
+                    Description = "A complex novel in eight parts, with more than a dozen " +
+                    "major characters, it deals with themes of betrayal, faith, family, marriage," +
+                    " Imperial Russian society, desire, and rural vs. city life.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c12")
+                },
+                new Book
+                {
+                    Id = new Guid("e9e99f1f-ba87-40ee-9093-a06dc4140832"),
+                    Name = "Crime and Punishment",
+                    AuthorId = new Guid("e9e99f1f-ba87-40ee-9093-a06dc4140831"),
+                    ISBN = "9780140449136",
+                    Genre = "Novel",
+                    Description = "A novel about the mental anguish and moral dilemmas of " +
+                    "an impoverished ex-student in Saint Petersburg who formulates a plan to kill" +
+                    " an unscrupulous pawnbroker for her money.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c13")
+                },
+                new Book
+                {
+                    Id = new Guid("e2a6d4fd-8c3a-4b89-9fe7-9c80d9d5e9c3"),
+                    Name = "The Brothers Karamazov",
+                    AuthorId = new Guid("e9e99f1f-ba87-40ee-9093-a06dc4140831"),
+                    ISBN = "9780374528379",
+                    Genre = "Novel",
+                    Description = "A passionate philosophical novel that enters deeply into" +
+                    " the ethical debates of God, free will, and morality.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c14")
+                },
+                new Book
+                {
+                    Id = new Guid("1a7d9b8d-6c8f-4db0-8d7b-9d9b7c0f7c2e"),
+                    Name = "The Seagull",
+                    AuthorId = new Guid("aa4ae982-75f4-400f-9ed3-b0d11c3523e2"),
+                    ISBN = "9780140449266",
+                    Genre = "Play",
+                    Description = "A play that deals with lost opportunities and unrequited love.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c15")
+                },
+                new Book
+                {
+                    Id = new Guid("e2a6d4fd-8c3a-4b89-9fe7-9c80d9d5e9c4"),
+                    Name = "Uncle Vanya",
+                    AuthorId = new Guid("aa4ae982-75f4-400f-9ed3-b0d11c3523e2"),
+                    ISBN = "9780199536696",
+                    Genre = "Play",
+                    Description = "A play that portrays the visit of an elderly professor and his young" +
+                    " wife, Yelena, to the rural estate that supports their urban lifestyle.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c16")
+                },
+                new Book
+                {
+                    Id = new Guid("24a6d8d9-df41-4380-b109-d83f60aac626"),
+                    Name = "Eugene Onegin",
+                    AuthorId = new Guid("2fafcf8b-75a9-4c61-b3ed-be974319b076"),
+                    ISBN = "9780140448030",
+                    Genre = "Novel",
+                    Description = "A novel in verse that is a classic of Russian literature.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c17")
+                },
+                new Book
+                {
+                    Id = new Guid("1a7d9b8d-6c8f-4db0-8d7b-9d9b7c0f7c2f"),
+                    Name = "The Captain's Daughter",
+                    AuthorId = new Guid("2fafcf8b-75a9-4c61-b3ed-be974319b076"),
+                    ISBN = "9780199538690",
+                    Genre = "Novel",
+                    Description = "A historical novel that depicts the rebellion of Pugachev.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c18")
+                },
+                new Book
+                {
+                    Id = new Guid("e2a6d4fd-8c3a-4b89-9fe7-9c80d9d5e9c5"),
+                    Name = "The Master and Margarita",
+                    AuthorId = new Guid("24a6d8d9-df41-4380-b109-d83f60aac625"),
+                    ISBN = "9780141180144",
+                    Genre = "Novel",
+                    Description = "A novel that combines supernatural elements with satirical dark comedy.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c19")
+                },
+                new Book
+                {
+                    Id = new Guid("1a7d9b8d-6c8f-4db0-8d7b-9d9b7c0f7c30"),
+                    Name = "Heart of a Dog",
+                    AuthorId = new Guid("24a6d8d9-df41-4380-b109-d83f60aac625"),
+                    ISBN = "9780140455151",
+                    Genre = "Novel",
+                    Description = "A novel about a scathing satire on Soviet Russia.",
+                    CountBook = 2,
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c20")
+                }
             );
         }
     }

@@ -1,14 +1,8 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
-using Library.Application.Libraries.Commands.Book.UpdateBook;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Library.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Commands.Book.TakeBook
 {
@@ -22,17 +16,43 @@ namespace Library.Application.Libraries.Commands.Book.TakeBook
         public async Task Handle(TakeBookCommand request, CancellationToken cancellationToken)
         {
             Domain.Book? entity = await _libraryDbContext.Books.FirstOrDefaultAsync(book =>
-                book.Id == request.Id, cancellationToken);
+                book.Id == request.Id && book.IsBookInLibrary == true, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(Book), request.Id);
             }
 
-            entity.IsBookInLibrary = false;
+            LibraryUser? user = await _libraryDbContext.LibraryUsers.FirstOrDefaultAsync(user =>
+                user.Id == request.LibraryUserId);
+
+            if (user == null)
+            {
+                user = new LibraryUser { Id = request.LibraryUserId };
+                await _libraryDbContext.LibraryUsers.AddAsync(user, cancellationToken);
+                await _libraryDbContext.SaveChangesAsync(cancellationToken);
+            }
+
+            if (user.TakenBooks == null)
+            {
+                user.TakenBooks = new List<Domain.Book> { entity };
+            }
+            else
+            {
+                user.TakenBooks.Add(entity);
+            }
+
+            
             entity.TimeOfTake = DateTime.Now;
             entity.TimeOfReturn = DateTime.Now.AddDays(7);
-            entity.NumberReaderTicket = request.NumberReaderTicket;
+            entity.LibraryUser = user;
+            entity.LibraryUserId = user.Id;
+            entity.CountBook -= 1;
+
+            if(entity.CountBook == 0)
+            {
+                entity.IsBookInLibrary = false;
+            }
 
             await _libraryDbContext.SaveChangesAsync(cancellationToken);
         }

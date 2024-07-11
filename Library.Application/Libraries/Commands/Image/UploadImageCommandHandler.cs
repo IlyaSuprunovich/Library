@@ -1,10 +1,7 @@
-﻿using Library.Application.Interfaces;
+﻿using Library.Application.Common.Exceptions;
+using Library.Application.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Commands.Image
 {
@@ -24,22 +21,43 @@ namespace Library.Application.Libraries.Commands.Image
                 throw new Exception("Invalid file.");
             }
 
-            using (var memoryStream = new MemoryStream())
+            Domain.Book? book = await _libraryDbContext.Books
+                .FindAsync(new object[] { request.BookId });
+
+            if (book is not { })
+                throw new NotFoundException(nameof(Domain.Book), request.BookId);
+
+            Domain.Image? existingImage = await _libraryDbContext.Images
+                .FirstOrDefaultAsync(image => image.BookId == book.Id);
+
+            using (MemoryStream memoryStream = new())
             {
                 await request.File.CopyToAsync(memoryStream);
 
-                var image = new Domain.Image
+                Domain.Image newImage = new()
                 {
-                    Id = Guid.NewGuid(),
                     FileName = request.File.FileName,
                     Data = memoryStream.ToArray(),
-                    ContentType = request.File.ContentType
+                    ContentType = request.File.ContentType,
+                    Book = book
                 };
 
-                await _libraryDbContext.Images.AddAsync(image);
+                if (existingImage != null)
+                {
+                    // Удаляем старое изображение
+                    _libraryDbContext.Images.Remove(existingImage);
+                }
+
+                // Добавляем новое изображение
+                await _libraryDbContext.Images.AddAsync(newImage);
+
+                // Обновляем книгу с новым идентификатором изображения
+                book.ImageId = newImage.Id;
+                _libraryDbContext.Books.Update(book);
+
                 await _libraryDbContext.SaveChangesAsync(cancellationToken);
 
-                return image.Id;
+                return newImage.Id;
             }
         }
     }

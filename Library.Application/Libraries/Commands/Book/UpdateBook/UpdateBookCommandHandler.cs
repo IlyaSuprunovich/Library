@@ -1,13 +1,7 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
-using Library.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Commands.Book.UpdateBook
 {
@@ -23,7 +17,7 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
             Domain.Book? entity = await _libraryDbContext.Books.FirstOrDefaultAsync(book =>
                 book.Id == request.Id, cancellationToken);
 
-            if (entity == null /*|| entity.AuthorId != request.AuthorId*/)
+            if (entity == null)
             {
                 throw new NotFoundException(nameof(Book), request.Id);
             }
@@ -34,6 +28,9 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
             entity.Description = request.Description;
             entity.Author = request.Author;
             entity.AuthorId = request.AuthorId;
+            entity.CountBook = request.CountBook;
+            entity.Image = request.Image;
+            entity.ImageId = request.ImageId;
 
             await _libraryDbContext.SaveChangesAsync(cancellationToken);
         }

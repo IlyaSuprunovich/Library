@@ -2,11 +2,6 @@
 using Library.Domain;
 using Library.Persistence.EntityTypeConfigurations;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Persistence
 {
@@ -14,7 +9,8 @@ namespace Library.Persistence
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<Image> Images { get; set; }
+        public DbSet<Image> Images { get; set; } 
+        public DbSet<LibraryUser> LibraryUsers { get; set; }
 
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options) 
             : base(options) { }
@@ -24,6 +20,7 @@ namespace Library.Persistence
             builder.ApplyConfiguration(new AuthorConfiguration());
             builder.ApplyConfiguration(new BookConfiguration());
             builder.ApplyConfiguration(new ImageConfiguration());
+            builder.ApplyConfiguration(new LibraryUserConfiguration());
 
             base.OnModelCreating(builder);
         }

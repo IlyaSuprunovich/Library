@@ -1,11 +1,6 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Common.Behaviors
 {
@@ -22,8 +17,8 @@ namespace Library.Application.Common.Behaviors
         public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, 
             CancellationToken cancellationToken)
         {
-            var context = new ValidationContext<TRequest>(request);
-            var failures = _validators
+            ValidationContext<TRequest> context = new(request);
+            List<ValidationFailure> failures = _validators
                 .Select(validator => validator.Validate(context))
                 .SelectMany(request => request.Errors)
                 .Where(failure => failure != null)

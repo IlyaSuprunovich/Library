@@ -5,14 +5,13 @@ using Library.Application.Libraries.Commands.Book.UpdateBook;
 using Library.Application.Libraries.Queries.Book.GetBookDetails;
 using Library.Application.Libraries.Queries.Book.GetBookList;
 using Library.Application.Libraries.Queries.Book.GetBookByISBN;
-using Library.Application.Libraries.Queries.Book.GetBookList;
-using Library.Application.Libraries.Queries;
 using Library.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Library.Application.Libraries.Commands.Book.TakeBook;
-using Library.Application.Libraries.Queries.Book.TakeBook;
 using Library.Application.Libraries.Commands.Book.ReturnBook;
+using Library.Application.Libraries.Queries.Book.GetBookByName;
+using Library.Application.Libraries.Queries.Book.GetBookGenreList;
 
 namespace Library.WebApi.Controllers
 {
@@ -27,116 +26,132 @@ namespace Library.WebApi.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
-        public async Task<ActionResult<BookListVm>> GetAll()
+        [Authorize]
+        [AllowAnonymous]
+        public async Task<ActionResult<PagedResponse<BookLookupDto>>> GetAll([FromQuery] int? pageNumber, 
+            [FromQuery] int? pageSize, [FromQuery] string? genre, [FromQuery] string? name)
         {
-            var query = new GetBookListQuery()
+            GetBookListQuery query = new()
             {
-                AuthorId = new Guid("58dc909b-7f4a-4d4c-85e1-01a510780111")
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                Genre = genre,
+                Name = name
             };
-            var vm = await Mediator.Send(query);
+
+            PagedResponse<BookLookupDto> vm = await Mediator.Send(query);
             return Ok(vm);
         }
 
         [HttpGet("{id}")]
-        //[Authorize]
-        public async Task<ActionResult<BookDetailsVm>> Get(Guid id)
+        [Authorize]
+        [AllowAnonymous]
+        public async Task<ActionResult<BookVm>> Get(Guid id)
         {
-            var query = new GetBookDetailsQuery()
+            GetBookByIdQuery query = new()
             {
-                //AuthorId = UserId,
                 Id = id
             };
 
-            var vm = await Mediator.Send(query);
+            BookVm vm = await Mediator.Send(query);
             return Ok(vm);
         }
 
+        [HttpGet("isbn/{isbn}")]
+        [Authorize]
+        [AllowAnonymous]
+        public async Task<ActionResult<BookByISBNVm>> GetByISBN(string isbn)
+        {
+            GetBookByISBNQuery query = new()
+            {
+                ISBN = isbn
+            };
+
+            BookByISBNVm vm = await Mediator.Send(query);
+            return Ok(vm);
+        }
+
+        [HttpGet("by-name")]
+        [Authorize]
+        [AllowAnonymous]
+        public async Task<ActionResult<BookByNameLookupDto>> GetBookByName([FromQuery] string name)
+        {
+            GetBookByNameQuery query = new() 
+            {
+                Name = name 
+            };
+
+            BookByNameLookupDto result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("genres")]
+        [Authorize]
+        [AllowAnonymous]
+        public async Task<ActionResult<BookGenreListVm>> GetBookGenres()
+        {
+            GetBookGenreListQuery query = new();
+
+            BookGenreListVm result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
         [HttpPost]
-        //[Authorize]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateBookDto createBookDto)
         {
-            var command = _mapper.Map<CreateBookCommand>(createBookDto);
-            //command.AuthorId = UserId;
+            CreateBookCommand command = _mapper.Map<CreateBookCommand>(createBookDto);
 
-            var bookId = await Mediator.Send(command);
+            Guid bookId = await Mediator.Send(command);
             return Ok(bookId);
         }
 
         [HttpPut]
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update([FromBody] UpdateBookDto updateBookDto)
         {
-            var command = _mapper.Map<UpdateBookCommand>(updateBookDto);
-            //command.AuthorId = UserId;
+            UpdateBookCommand command = _mapper.Map<UpdateBookCommand>(updateBookDto);
 
             await Mediator.Send(command);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var command = new DeleteBookCommand
+            DeleteBookCommand command = new()
             {
-                Id = id,
-                //AuthorId = UserId
+                Id = id
             };
 
             await Mediator.Send(command);
             return NoContent();
         }
 
-        [HttpGet("isbn/{isbn}")]
-        //[Authorize]
-        public async Task<ActionResult<BookDetailsVm>> GetByISBN(string isbn)
+        [HttpPut("give/{idBook}/{userId}")]
+        [Authorize]
+        public async Task<IActionResult> GiveBook(Guid idBook, Guid userId)
         {
-            var query = new GetBookByISBNQuery()
-            {
-                //AuthorId = UserId,
-                ISBN = isbn
-            };
-
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
-        }
-
-        [HttpPut("give/{idBook}")]
-        //[Authorize]
-        public async Task<IActionResult> GiveBook(Guid idBook)
-        {
-            //var command = _mapper.Map<TakeBookCommand>(updateBookDto);
-            //command.AuthorId = UserId;
-
-            var query = new TakeBookCommand()
+            TakeBookCommand query = new()
             {
                 Id = idBook,
-                NumberReaderTicket = new Guid("58dc909b-7f4a-4d4c-85e1-01a510780111")
+                LibraryUserId = userId
             };
-        
-
-
 
             await Mediator.Send(query);
             return NoContent();
         }
 
-        [HttpPut("return/{idBook}")]
-        //[Authorize]
-        public async Task<IActionResult> ReturnBook(Guid idBook)
+        [HttpPut("return/{idBook}/{userId}")]
+        [Authorize]
+        public async Task<IActionResult> ReturnBook(Guid idBook, Guid userId)
         {
-            //var command = _mapper.Map<TakeBookCommand>(updateBookDto);
-            //command.AuthorId = UserId;
-
-            var query = new ReturnBookCommand()
+            ReturnBookCommand query = new()
             {
                 Id = idBook,
-                NumberReaderTicket = new Guid("58dc909b-7f4a-4d4c-85e1-01a510780111")
+                LibraryUserId = userId
             };
-
-
-
 
             await Mediator.Send(query);
             return NoContent();

@@ -1,9 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Commands.Book.DeleteBook
 {
@@ -13,10 +8,6 @@ namespace Library.Application.Libraries.Commands.Book.DeleteBook
         {
             RuleFor(deleteBookCommand =>
                 deleteBookCommand.Id)
-                .NotEqual(Guid.Empty);
-
-            RuleFor(deleteBookCommand =>
-                deleteBookCommand.AuthorId)
                 .NotEqual(Guid.Empty);
         }
     }

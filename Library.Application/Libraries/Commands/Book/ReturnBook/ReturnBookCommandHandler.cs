@@ -1,13 +1,8 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
-using Library.Application.Libraries.Commands.Book.TakeBook;
+using Library.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Commands.Book.ReturnBook
 {
@@ -28,10 +23,24 @@ namespace Library.Application.Libraries.Commands.Book.ReturnBook
                 throw new NotFoundException(nameof(Book), request.Id);
             }
 
-            entity.IsBookInLibrary = true;
+            LibraryUser? user = await _libraryDbContext.LibraryUsers.FirstOrDefaultAsync(user =>
+                user.Id == request.LibraryUserId);
+
+            if (user is not { })
+            {
+                throw new NotFoundException(nameof(LibraryUser), request.LibraryUserId);
+            }
+
+            user?.TakenBooks?.Remove(entity);
+            
             entity.TimeOfTake = null;
             entity.TimeOfReturn = null;
-            entity.NumberReaderTicket = null;
+            entity.LibraryUser = null;
+            entity.LibraryUserId = null;
+            entity.CountBook += 1;
+            
+            if(entity.CountBook > 0)
+                entity.IsBookInLibrary = true;
 
             await _libraryDbContext.SaveChangesAsync(cancellationToken);
         }

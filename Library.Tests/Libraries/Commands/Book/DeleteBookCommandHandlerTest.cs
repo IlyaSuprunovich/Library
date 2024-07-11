@@ -1,14 +1,6 @@
 ﻿using Library.Application.Common.Exceptions;
-using Library.Application.Libraries.Commands.Book.CreateBook;
 using Library.Application.Libraries.Commands.Book.DeleteBook;
-using Library.Domain;
 using Library.Tests.Common;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Tests.Libraries.Commands.Book
 {
@@ -44,8 +36,7 @@ namespace Library.Tests.Libraries.Commands.Book
             //Act
             await handler.Handle(new DeleteBookCommand
             {
-                Id = LibraryContextFactory.BookIdForDelete,
-                AuthorId = LibraryContextFactory.Id_A
+                Id = LibraryContextFactory.BookIdForDelete
             }, CancellationToken.None);
 
             //Assert
@@ -68,7 +59,6 @@ namespace Library.Tests.Libraries.Commands.Book
                     new DeleteBookCommand
                     {
                         Id = Guid.NewGuid(),
-                        AuthorId = LibraryContextFactory.Id_A
                     }, CancellationToken.None);
             });
         }

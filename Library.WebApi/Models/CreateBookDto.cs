@@ -11,8 +11,10 @@ namespace Library.WebApi.Models
         public string Name { get; set; }
         public string Genre { get; set; }
         public string Description { get; set; }
-        public Author Author { get; set; }
+        public Author? Author { get; set; }
         public Guid AuthorId { get; set; }
+        public int CountBook { get; set; }
+        public Guid? ImageId { get; set; }
 
         public void Mapping(Profile profile)
         {
@@ -28,7 +30,11 @@ namespace Library.WebApi.Models
                 .ForMember(bookCommand => bookCommand.Author,
                     x => x.MapFrom(bookDto => bookDto.Author))
                 .ForMember(bookCommand => bookCommand.AuthorId,
-                    x => x.MapFrom(bookDto => bookDto.AuthorId));
+                    x => x.MapFrom(bookDto => bookDto.AuthorId))
+                .ForMember(bookCommand => bookCommand.CountBook,
+                    x => x.MapFrom(bookDto => bookDto.CountBook))
+                .ForMember(bookCommand => bookCommand.ImageId,
+                    x => x.MapFrom(bookDto => bookDto.ImageId));
         }
     }
 }

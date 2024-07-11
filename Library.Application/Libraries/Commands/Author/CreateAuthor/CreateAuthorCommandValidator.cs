@@ -1,9 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Libraries.Commands.Author.CreateAuthor
 {
@@ -30,10 +25,6 @@ namespace Library.Application.Libraries.Commands.Author.CreateAuthor
                 createAuthorCommand.Country)
                 .NotEmpty()
                 .MaximumLength(20);
-
-            /*RuleFor(createAuthorCommand =>
-                createAuthorCommand.Books)
-                .NotEmpty();*/
         }
 
     }

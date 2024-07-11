@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Library.Application.Libraries.Queries.Book.TakeBook;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +11,9 @@ namespace Library.Application.Libraries.Queries.Image
     {
         public GetImageByIdQueryValidator()
         {
-            RuleFor(takeBookQuery =>
-                takeBookQuery.Id)
+            RuleFor(getImageQuery =>
+                getImageQuery.Id)
                 .NotEqual(Guid.Empty);
-
-            /*RuleFor(bookDetailsQuery =>
-                bookDetailsQuery.AuthorId)
-                    .NotEqual(Guid.Empty);*/
         }
     }
 }

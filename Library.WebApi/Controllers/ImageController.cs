@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Library.Application.Libraries.Commands.Author.CreateAuthor;
 using Library.Application.Libraries.Commands.Image;
 using Library.Application.Libraries.Queries.Image;
-using Library.WebApi.Models;
+using Library.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.WebApi.Controllers
@@ -18,23 +18,26 @@ namespace Library.WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("upload")]
-        public async Task<IActionResult> UploadImage([FromForm] UploadImageCommand command)
-        {
-            var imageId = await Mediator.Send(command);
-            return Ok(imageId);
-        }
-
         [HttpGet("{id}")]
+        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> GetImageById(Guid id)
         {
-            var image = await Mediator.Send(new GetImageByIdQuery(id));
+            Image image = await Mediator.Send(new GetImageByIdQuery(id));
             if (image == null)
             {
                 return NotFound();
             }
 
             return File(image.Data, image.ContentType, image.FileName);
+        }
+
+        [HttpPost("upload")]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> UploadImage([FromForm] UploadImageCommand command)
+        {
+            Guid imageId = await Mediator.Send(command);
+            return Ok(imageId);
         }
     }
 }

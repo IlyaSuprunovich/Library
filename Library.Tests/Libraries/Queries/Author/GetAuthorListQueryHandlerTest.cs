@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
 using Library.Application.Libraries.Queries.Author.GetAuthorList;
-using Library.Application.Libraries.Queries.Book.GetBookList;
 using Library.Persistence;
 using Library.Tests.Common;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Tests.Libraries.Queries.Author
 {
@@ -34,12 +28,11 @@ namespace Library.Tests.Libraries.Queries.Author
             var result = await handler.Handle(
                 new GetAuthorListQuery
                 {
-                    Id = LibraryContextFactory.Id_B
                 }, CancellationToken.None);
 
             //Assert
             result.ShouldBeOfType<AuthorListVm>();
-            result.Authors.Count.ShouldBe(12);
+            result.Authors.Count.ShouldBe(10);
         }
     }
 }

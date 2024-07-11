@@ -4,7 +4,12 @@ using Library.Application.Interfaces;
 using Library.Persistence;
 using Library.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Library.WebApi
 {
@@ -19,6 +24,13 @@ namespace Library.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.WriteIndented = true;
+            });
+
             services.AddAutoMapper(config =>
             {
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
@@ -26,9 +38,42 @@ namespace Library.WebApi
 
             });
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                 .AddJwtBearer("Bearer", options =>
+                 {
+                     options.TokenValidationParameters = new TokenValidationParameters
+                     {
+                         ValidateIssuer = true,
+                         ValidateAudience = true,
+                         ValidateLifetime = true,
+                         ValidateIssuerSigningKey = true,
+                         ValidIssuer = Configuration["Jwt:Issuer"],
+                         ValidAudience = Configuration["Jwt:Audience"],
+                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                            .GetBytes(Configuration["Jwt:Key"]))
+                     };
+                 });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "book_api");
+                });
+            });
+
+            services.AddDbContext<LibraryDbContext>(options =>
+                 options.UseMySql(Configuration.GetConnectionString("DbConnection"),
+                     ServerVersion.AutoDetect(Configuration.GetConnectionString("DbConnection"))));
+
             services.AddApplication();
             services.AddPersistence(Configuration);
-            services.AddControllers();
 
             services.AddCors(options =>
             {
@@ -40,23 +85,44 @@ namespace Library.WebApi
                 });
             });
 
-            services.AddAuthentication(config =>
+            services.AddSwaggerGen(config =>
             {
-                config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                    .AddJwtBearer("Bearer", options =>
-                    {
-                        options.Authority = "https://localhost:7102/";
-                        options.Audience = "LibraryWebAPI";
-                        options.RequireHttpsMetadata = false;
-                    });
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                config.IncludeXmlComments(xmlPath);
+            });
 
             services.AddSwaggerGen(config =>
             {
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 config.IncludeXmlComments(xmlPath);
+
+                config.SwaggerDoc("v1", new OpenApiInfo { Title = "Library API", Version = "v1" });
+
+                config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+                config.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[]{}
+                    }
+                });
             });
         }
 
@@ -73,16 +139,17 @@ namespace Library.WebApi
                 config.SwaggerEndpoint("swagger/v1/swagger.json", "Library API");
             });
             app.UseCustomExceptionHandler();
-            app.UseRouting();
-            app.UseHttpsRedirection();
             app.UseCors("AllowAll");
+            app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireAuthorization("ApiScope");
             });
         }
     }
