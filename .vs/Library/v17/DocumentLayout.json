@@ -131,8 +131,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Queries\\Book\\GetBookDetailsQueryHandlerTests.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAswAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:53:01.394Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:53:01.394Z"
             },
             {
               "$type": "Document",
@@ -144,8 +143,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Queries\\Author\\GetAuthorListQueryHandlerTest.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAswAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:52:56.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:52:56.57Z"
             },
             {
               "$type": "Document",
@@ -157,8 +155,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Queries\\Author\\GetAuthorDetailsQueryHandlerTest.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAswAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:52:53.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:52:53.526Z"
             },
             {
               "$type": "Document",
@@ -170,8 +167,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Commands\\Book\\CreateBookCommandHandlerTest.cs",
               "ViewState": "AQIAADEAAAAAAAAAAAAUwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:52:24.917Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:52:24.917Z"
             },
             {
               "$type": "Document",
@@ -183,8 +179,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Commands\\Author\\CreateAuthorCommandHandlerTest.cs",
               "ViewState": "AQIAACgAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:52:07.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:52:07.895Z"
             },
             {
               "$type": "Document",
@@ -196,8 +191,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Commands\\Book\\UpdateBookCommandHandlerTest.cs",
               "ViewState": "AQIAAEoAAAAAAAAAAAAUwCMAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:32:50.644Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:32:50.644Z"
             },
             {
               "$type": "Document",
@@ -209,8 +203,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Commands\\Author\\DeleteAuthorCommandHandlerTest.cs",
               "ViewState": "AQIAACwAAAAAAAAAAAAcwBwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:24:32.532Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:24:32.532Z"
             },
             {
               "$type": "Document",
@@ -222,8 +215,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Commands\\Book\\DeleteBookCommandHandlerTest.cs",
               "ViewState": "AQIAACgAAAAAAAAAAADwvxAAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:22:31.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:22:31.357Z"
             },
             {
               "$type": "Document",
@@ -235,8 +227,7 @@
               "RelativeToolTip": "Library.Tests\\Common\\TestCommandBase.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:52:01.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:52:01.117Z"
             },
             {
               "$type": "Document",
@@ -248,8 +239,7 @@
               "RelativeToolTip": "Library.Tests\\Libraries\\Commands\\Author\\UpdateAuthorCommandHandlerTest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADEAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:23:55.568Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:23:55.568Z"
             },
             {
               "$type": "Document",
@@ -261,8 +251,7 @@
               "RelativeToolTip": "Library.Tests\\Common\\QueryTestFixture.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:51:58.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:51:58.098Z"
             },
             {
               "$type": "Document",
@@ -274,8 +263,7 @@
               "RelativeToolTip": "Library.Application\\Libraries\\Commands\\Book\\UpdateBook\\UpdateBookCommandHandler.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAAACIAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:32:50.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:32:50.584Z"
             },
             {
               "$type": "Document",
@@ -287,8 +275,7 @@
               "RelativeToolTip": "Library.Tests\\Common\\LibraryContextFactory.cs",
               "ViewState": "AQIAAKQAAAAAAAAAAAAAAA0AAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:54:17.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T11:54:17.623Z"
             },
             {
               "$type": "Document",
@@ -300,8 +287,7 @@
               "RelativeToolTip": "Library.WebApi\\Controllers\\BookController.cs",
               "ViewState": "AQIAAG8AAAAAAAAAAAAzwIIAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T14:40:51.682Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T14:40:51.682Z"
             }
           ]
         }
