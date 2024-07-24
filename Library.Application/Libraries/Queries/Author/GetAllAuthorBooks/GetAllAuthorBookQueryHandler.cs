@@ -1,30 +1,38 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Library.Application.Interfaces;
+using Library.Application.Common.Exceptions;
+using Library.Application.Libraries.Queries.Author.DTO;
+using Library.Application.Libraries.Queries.Book.DTO;
+using Library.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Queries.Author.GetAllAuthorBooks
 {
-    public class GetAllAuthorBookQueryHandler : IRequestHandler<GetAllAuthorBookQuery, AllAuthorBookVm>
+    public class GetAllAuthorBookQueryHandler : IRequestHandler<GetAllAuthorBookQuery, 
+        AllAuthorBookResponseDto>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IAuthorRepository _authorRepository;
         private readonly IMapper _mapper;
 
-        public GetAllAuthorBookQueryHandler(ILibraryDbContext libraryDbContext, IMapper mapper)
+        public GetAllAuthorBookQueryHandler(IAuthorRepository authorRepository, IMapper mapper)
         {
-            _libraryDbContext = libraryDbContext;
+            _authorRepository = authorRepository;
             _mapper = mapper;
         }
 
-        public async Task<AllAuthorBookVm> Handle(GetAllAuthorBookQuery request, 
+        public async Task<AllAuthorBookResponseDto> Handle(GetAllAuthorBookQuery request, 
             CancellationToken cancellationToken)
         {
-            List<AllAuthorBookLookupDto> booksQuery = await _libraryDbContext.Books
-                .Where(book => book.AuthorId == request.AuthorId)
-                .ProjectTo<AllAuthorBookLookupDto>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
-            return new AllAuthorBookVm { Books = booksQuery };
+            IQueryable<Domain.Entities.Book> books = await _authorRepository.GetBooksAsync(
+                request.AuthorId, cancellationToken);
+
+            if (books is not { })
+                throw new NotFoundException(nameof(Domain.Entities.Book), request.AuthorId);
+
+            List<BookResponseDto> booksQuery = books
+                .ProjectTo<BookResponseDto>(_mapper.ConfigurationProvider)
+                .ToList();
+            return new AllAuthorBookResponseDto { Books = booksQuery };
         }
     }
 }

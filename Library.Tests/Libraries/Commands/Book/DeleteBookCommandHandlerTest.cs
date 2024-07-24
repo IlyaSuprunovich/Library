@@ -10,16 +10,16 @@ namespace Library.Tests.Libraries.Commands.Book
         public async Task DeleteBookCommandHandler_Success()
         {
             //Arrange
-            var handler = new DeleteBookCommandHandler(Context);
+            var handler = new DeleteBookCommandHandler(BookRepository);
 
-            var initialBook = new Domain.Book
+            var initialBook = new Domain.Entities.Book
             {
-                Id = LibraryContextFactory.BookIdForUpdate,
+                Id = LibraryContextFactory.BookIdForDelete,
                 ISBN = "ISBN",
                 Description = "description",
                 Genre = "genre",
                 Name = "name",
-                Author = new Domain.Author()
+                Author = new Domain.Entities.Author()
                 {
                     Id = LibraryContextFactory.Id_B,
                     Name = "name",
@@ -49,7 +49,7 @@ namespace Library.Tests.Libraries.Commands.Book
         public async Task DeleteBookCommandHandler_FailOnWrongId()
         {
             //Arrange
-            var handler = new DeleteBookCommandHandler(Context);
+            var handler = new DeleteBookCommandHandler(BookRepository);
 
             //Act
             //Assert

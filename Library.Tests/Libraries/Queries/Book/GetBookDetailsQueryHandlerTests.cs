@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Library.Application.Libraries.Queries.Book.DTO;
 using Library.Application.Libraries.Queries.Book.GetBookDetails;
 using Library.Persistence;
+using Library.Persistence.Repositories;
 using Library.Tests.Common;
 using Shouldly;
 
@@ -11,18 +13,20 @@ namespace Library.Tests.Libraries.Queries.Book
     {
         private readonly LibraryDbContext _context;
         private readonly IMapper _mapper;
+        private readonly BookRepository _bookRepository;
 
         public GetBookDetailsQueryHandlerTests(QueryTestFixture fixture)
         {
             _context = fixture.Context;
             _mapper = fixture.Mapper;
+            _bookRepository = fixture.BookRepository;
         }
 
         [Fact]
         public async Task GetBookDetailsQueryHandler_Success()
         {
             //Arrange
-            var handler = new GetBookByIdQueryHandler(_context, _mapper);
+            var handler = new GetBookByIdQueryHandler(_bookRepository, _mapper);
 
             //Act
             var result = await handler.Handle(
@@ -32,7 +36,7 @@ namespace Library.Tests.Libraries.Queries.Book
                 }, CancellationToken.None);
 
             //Assert
-            result.ShouldBeOfType<BookVm>();
+            result.ShouldBeOfType<BookResponseDto>();
             result.ISBN.ShouldBe("9876543219876");
             result.Name.ShouldBe("Name2");
             result.Genre.ShouldBe("Genre2");

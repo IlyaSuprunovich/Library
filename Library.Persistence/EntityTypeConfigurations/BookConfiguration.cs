@@ -1,4 +1,4 @@
-﻿using Library.Domain;
+﻿using Library.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -45,11 +45,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                    .IsRequired()
                    .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(book => book.Image)
-                   .WithOne(image => image.Book)
-                   .HasForeignKey<Book>(book => book.ImageId)
-                   .OnDelete(DeleteBehavior.Cascade);
-
             builder.HasOne(book => book.LibraryUser)
                    .WithMany(user => user.TakenBooks)
                    .HasForeignKey(book => book.LibraryUserId)
@@ -65,8 +60,9 @@ namespace Library.Persistence.EntityTypeConfigurations
                     Genre = "Novel",
                     Description = "A novel that intertwines the lives of private and public" +
                     " individuals during the time of the Napoleonic wars.",
-                    CountBook = 2,
-                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c11")
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c11"),
+                    LibraryUserId = new Guid("4ec7a303-11f5-46d0-a1e4-8987b9aba75b"),
+                    IsBookInLibrary = false
                 },
                 new Book
                 {
@@ -78,8 +74,9 @@ namespace Library.Persistence.EntityTypeConfigurations
                     Description = "A complex novel in eight parts, with more than a dozen " +
                     "major characters, it deals with themes of betrayal, faith, family, marriage," +
                     " Imperial Russian society, desire, and rural vs. city life.",
-                    CountBook = 2,
-                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c12")
+                    ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c12"),
+                    LibraryUserId = new Guid("2f155e1a-d652-4a4c-b799-4d7653cdb27e"),
+                    IsBookInLibrary = false
                 },
                 new Book
                 {
@@ -91,7 +88,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     Description = "A novel about the mental anguish and moral dilemmas of " +
                     "an impoverished ex-student in Saint Petersburg who formulates a plan to kill" +
                     " an unscrupulous pawnbroker for her money.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c13")
                 },
                 new Book
@@ -103,7 +99,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     Genre = "Novel",
                     Description = "A passionate philosophical novel that enters deeply into" +
                     " the ethical debates of God, free will, and morality.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c14")
                 },
                 new Book
@@ -114,7 +109,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     ISBN = "9780140449266",
                     Genre = "Play",
                     Description = "A play that deals with lost opportunities and unrequited love.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c15")
                 },
                 new Book
@@ -126,7 +120,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     Genre = "Play",
                     Description = "A play that portrays the visit of an elderly professor and his young" +
                     " wife, Yelena, to the rural estate that supports their urban lifestyle.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c16")
                 },
                 new Book
@@ -137,7 +130,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     ISBN = "9780140448030",
                     Genre = "Novel",
                     Description = "A novel in verse that is a classic of Russian literature.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c17")
                 },
                 new Book
@@ -148,7 +140,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     ISBN = "9780199538690",
                     Genre = "Novel",
                     Description = "A historical novel that depicts the rebellion of Pugachev.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c18")
                 },
                 new Book
@@ -159,7 +150,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     ISBN = "9780141180144",
                     Genre = "Novel",
                     Description = "A novel that combines supernatural elements with satirical dark comedy.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c19")
                 },
                 new Book
@@ -170,7 +160,6 @@ namespace Library.Persistence.EntityTypeConfigurations
                     ISBN = "9780140455151",
                     Genre = "Novel",
                     Description = "A novel about a scathing satire on Soviet Russia.",
-                    CountBook = 2,
                     ImageId = new Guid("60d8c1b4-eb78-4ab6-b283-30fd4f267c20")
                 }
             );

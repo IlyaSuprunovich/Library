@@ -1,6 +1,7 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Libraries.Commands.Book.UpdateBook;
 using Library.Tests.Common;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Tests.Libraries.Commands.Book
@@ -10,61 +11,59 @@ namespace Library.Tests.Libraries.Commands.Book
         [Fact]
         public async Task UpdateBookCommandHandler_Success()
         {
-            //Arrange
-            var handler = new UpdateBookCommandHandler(Context);
+            // Arrange
+            var handler = new UpdateBookCommandHandler(BookRepository, ImageRepository, Mediator);
             var updateISBN = "new ISBN";
             var updateDescription = "new description";
             var updateGenre = "new genre";
             var updateName = "new name";
-            var updateAuthor = new Domain.Author()
+
+            var bookInDb = await Context.Books
+            .Include(b => b.Image) 
+            .SingleOrDefaultAsync(b => b.Id == LibraryContextFactory.BookIdForUpdate, 
+                CancellationToken.None);
+            Assert.NotNull(bookInDb);
+
+
+            // Act
+            var fileName = "testImage.jpg";
+            var fileContent = "fake image content";
+            var fileStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(fileContent));
+            IFormFile file = new FormFile(fileStream, 0, fileStream.Length, "file", fileName)
             {
-                Id = LibraryContextFactory.Id_B,
-                Name = "name",
-                Surname = "surname",
-                Country = "country",
-                DateOfBirth = DateTime.Now
+                Headers = new HeaderDictionary(),
+                ContentType = "image/jpeg"
             };
 
-
-            var initialBook = new Domain.Book
-            {
-                Id = LibraryContextFactory.BookIdForUpdate,
-                ISBN = "initial ISBN",
-                Description = "initial description",
-                Genre = "initial genre",
-                Name = "initial name",
-                Author = updateAuthor,
-                AuthorId = LibraryContextFactory.Id_B
-            };
-
-            Context.Books.Add(initialBook);
-            await Context.SaveChangesAsync();
-
-            //Act
             await handler.Handle(new UpdateBookCommand
             {
-                Id = LibraryContextFactory.BookIdForUpdate,
-                ISBN = updateISBN,
-                Description = updateDescription,
-                Genre = updateGenre,
-                Name = updateName,
-                Author = updateAuthor,
-                AuthorId = LibraryContextFactory.Id_B,
+                Book = new()
+                {
+                    Id = LibraryContextFactory.BookIdForUpdate,
+                    ISBN = updateISBN,
+                    Description = updateDescription,
+                    Genre = updateGenre,
+                    Name = updateName,
+                    AuthorId = LibraryContextFactory.Id_B,
+                    File = file
+                }
             }, CancellationToken.None);
 
-            //Assert
-            Assert.NotNull(await Context.Books.SingleOrDefaultAsync(book =>
+            // Assert
+            var updatedBook = await Context.Books.Include(b => b.Image).SingleOrDefaultAsync(book =>
                 book.Id == LibraryContextFactory.BookIdForUpdate &&
                 book.ISBN == updateISBN && book.Description == updateDescription &&
                 book.Genre == updateGenre && book.Name == updateName &&
-                book.Author == updateAuthor && book.AuthorId == LibraryContextFactory.Id_B));
+                book.AuthorId == LibraryContextFactory.Id_B);
+
+            Assert.NotNull(updatedBook);
         }
 
         [Fact]
         public async Task UpdateBookCommandHandler_FailOnWrongId()
         {
             //Arrange
-            var handler = new UpdateBookCommandHandler(Context);
+            var handler = new UpdateBookCommandHandler(BookRepository, ImageRepository, Mediator);
 
             //Act
             //Assert
@@ -73,8 +72,11 @@ namespace Library.Tests.Libraries.Commands.Book
                 await handler.Handle(
                     new UpdateBookCommand
                     {
-                        Id = Guid.NewGuid(),
-                        AuthorId = LibraryContextFactory.Id_A
+                        Book = new()
+                        {
+                            Id = Guid.NewGuid(),
+                            AuthorId = LibraryContextFactory.Id_A
+                        }
                     }, CancellationToken.None);
             });
         }

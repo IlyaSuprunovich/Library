@@ -2,6 +2,7 @@
 using Library.Application.Common.Mappings;
 using Library.Application.Interfaces;
 using Library.Persistence;
+using Library.Persistence.Repositories;
 
 namespace Library.Tests.Common
 {
@@ -9,6 +10,8 @@ namespace Library.Tests.Common
     {
         public LibraryDbContext Context;
         public IMapper Mapper;
+        public AuthorRepository AuthorRepository;
+        public BookRepository BookRepository;
 
         public QueryTestFixture()
         {
@@ -19,6 +22,8 @@ namespace Library.Tests.Common
             });
 
             Mapper = configurationProvider.CreateMapper();
+            AuthorRepository = new(Context);
+            BookRepository = new(Context);
         }
 
         public void Dispose() 

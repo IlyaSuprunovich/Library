@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Library.Application.Libraries.Queries.LibraryUser.DTO;
 using Library.Application.Libraries.Queries.LibraryUser.GetTakenBooks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,15 +19,20 @@ namespace Library.WebApi.Controllers
         [HttpGet("userId/{userId}")]
         [Authorize]
         [AllowAnonymous]
-        public async Task<ActionResult<TakenBooksListVm>> GetById(Guid userId)
+        public async Task<ActionResult<TakenBooksListResponseDto>> GetById(Guid userId, 
+            CancellationToken cancellationToken)
         {
             GetTakenBooksListQuery query = new()
             {
                 Id = userId
             };
 
-            TakenBooksListVm vm = await Mediator.Send(query);
-            return Ok(vm);
+            TakenBooksListResponseDto dto = await Mediator.Send(query, cancellationToken);
+
+            if (dto == null)
+                return BadRequest();
+
+            return Ok(dto);
         }
     }
 }

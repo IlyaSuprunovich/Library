@@ -9,12 +9,12 @@ namespace Library.Tests.Libraries.Commands.Author
         public async Task CreateAuthorCommandHandler_Success()
         {
             //Arrange
-            var handler = new CreateAuthorCommandHandler(Context);
+            var handler = new CreateAuthorCommandHandler(AuthorRepository);
             var name = "name";
             var surname = "surname";
             var dateOfBirth = DateTime.Now;
             var country = "country";
-            var books = new List<Domain.Book>()
+            var books = new List<Domain.Entities.Book>()
                     {
                         new()
                         {
@@ -30,11 +30,13 @@ namespace Library.Tests.Libraries.Commands.Author
             var bookId = await handler.Handle(
                 new CreateAuthorCommand
                 {
-                    Name = name,
-                    Surname = surname,
-                    DateOfBirth = dateOfBirth,
-                    Country = country,
-                    Books = books
+                    Author = new()
+                    {
+                        Name = name,
+                        Surname = surname,
+                        DateOfBirth = dateOfBirth,
+                        Country = country,
+                    }
                 }, CancellationToken.None);
 
             //Assert
@@ -42,8 +44,7 @@ namespace Library.Tests.Libraries.Commands.Author
                 .AsEnumerable()
                 .SingleOrDefault(author =>
                     author.Name == name && author.Surname == surname &&
-                    author.DateOfBirth == dateOfBirth && author.Country == country &&
-                    author.Books.SequenceEqual(books));
+                    author.DateOfBirth == dateOfBirth && author.Country == country);
 
             Assert.NotNull(author);
         }

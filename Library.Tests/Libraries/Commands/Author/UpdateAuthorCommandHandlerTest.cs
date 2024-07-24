@@ -9,14 +9,14 @@ namespace Library.Tests.Libraries.Commands.Author
         [Fact]
         public async Task UpdateAuthorCommandHandler_Success()
         {
-            
+
             //Arrange
-            var handler = new UpdateAuthorCommandHandler(Context);
+            var handler = new UpdateAuthorCommandHandler(AuthorRepository);
             var name = "name";
             var surname = "surname";
             var dateOfBirth = DateTime.Now;
             var country = "country";
-            var books = new List<Domain.Book>()
+            var books = new List<Domain.Entities.Book>()
                     {
                         new()
                         {
@@ -28,7 +28,7 @@ namespace Library.Tests.Libraries.Commands.Author
                         }
                     };
 
-            var initialAuthor = new Domain.Author
+            var initialAuthor = new Domain.Entities.Author
             {
                 Id = LibraryContextFactory.AuthorIdForUpdate,
                 Name = name,
@@ -45,18 +45,21 @@ namespace Library.Tests.Libraries.Commands.Author
             //Act
             await handler.Handle(new UpdateAuthorCommand
             {
-                Id = LibraryContextFactory.BookIdForUpdate,
-                Name = name,
-                Surname = surname,
-                DateOfBirth = dateOfBirth,
-                Country = country,
-                Books = books
+                Author = new()
+                {
+                    Id = LibraryContextFactory.AuthorIdForUpdate,
+                    Name = name,
+                    Surname = surname,
+                    DateOfBirth = dateOfBirth,
+                    Country = country,
+                    Books = books
+                }
             }, CancellationToken.None);
 
 
             //Assert
             var author = Context.Authors
-                .AsEnumerable() 
+                .AsEnumerable()
                 .SingleOrDefault(author =>
                     author.Name == name && author.Surname == surname &&
                     author.DateOfBirth == dateOfBirth && author.Country == country &&
@@ -69,7 +72,7 @@ namespace Library.Tests.Libraries.Commands.Author
         public async Task UpdateAuthorCommandHandler_FailOnWrongId()
         {
             //Arrange
-            var handler = new UpdateAuthorCommandHandler(Context);
+            var handler = new UpdateAuthorCommandHandler(AuthorRepository);
 
             //Act
             //Assert
@@ -78,20 +81,23 @@ namespace Library.Tests.Libraries.Commands.Author
                 await handler.Handle(
                     new UpdateAuthorCommand
                     {
-                        Id = Guid.NewGuid(),
-                        Name = "name",
-                        Surname = "surname",
-                        DateOfBirth = DateTime.Now,
-                        Country = "country",
-                        Books = new List<Domain.Book>()
+                        Author = new()
                         {
-                            new()
+                            Id = Guid.NewGuid(),
+                            Name = "name",
+                            Surname = "surname",
+                            DateOfBirth = DateTime.Now,
+                            Country = "country",
+                            Books = new List<Domain.Entities.Book>()
                             {
-                                Id = Guid.NewGuid(),
-                                ISBN = "123",
-                                Name = "bookName",
-                                Genre = "genre",
-                                Description = "description",
+                                new()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    ISBN = "123",
+                                    Name = "bookName",
+                                    Genre = "genre",
+                                    Description = "description",
+                                }
                             }
                         }
                     }, CancellationToken.None);

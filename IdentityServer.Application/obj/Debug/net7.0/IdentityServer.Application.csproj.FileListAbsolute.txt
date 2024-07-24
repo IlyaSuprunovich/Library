@@ -1,0 +1,16 @@
+D:\Программирование\Library\IdentityServer.Application\bin\Debug\net7.0\IdentityServer.Application.deps.json
+D:\Программирование\Library\IdentityServer.Application\bin\Debug\net7.0\IdentityServer.Application.dll
+D:\Программирование\Library\IdentityServer.Application\bin\Debug\net7.0\IdentityServer.Application.pdb
+D:\Программирование\Library\IdentityServer.Application\bin\Debug\net7.0\IdentityServer.Domain.dll
+D:\Программирование\Library\IdentityServer.Application\bin\Debug\net7.0\IdentityServer.Domain.pdb
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.csproj.AssemblyReference.cache
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.AssemblyInfoInputs.cache
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.AssemblyInfo.cs
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.csproj.CoreCompileInputs.cache
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.sourcelink.json
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\Identity.6BA59446.Up2Date
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.dll
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\refint\IdentityServer.Application.dll
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\IdentityServer.Application.pdb
+D:\Программирование\Library\IdentityServer.Application\obj\Debug\net7.0\ref\IdentityServer.Application.dll

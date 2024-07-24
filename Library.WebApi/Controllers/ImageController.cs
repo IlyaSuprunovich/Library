@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
-using Library.Application.Libraries.Commands.Image;
+using Library.Application.Libraries.Commands.Image.DTO;
+using Library.Application.Libraries.Commands.Image.UploadImage;
 using Library.Application.Libraries.Queries.Image;
-using Library.Domain;
+using Library.Application.Libraries.Queries.Image.DTO;
+using Library.Application.Libraries.Queries.Image.GetImageById;
+using Library.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace Library.WebApi.Controllers
 {
@@ -21,22 +25,32 @@ namespace Library.WebApi.Controllers
         [HttpGet("{id}")]
         [Authorize]
         [AllowAnonymous]
-        public async Task<IActionResult> GetImageById(Guid id)
+        public async Task<IActionResult> GetImageById(Guid id, CancellationToken cancellationToken)
         {
-            Image image = await Mediator.Send(new GetImageByIdQuery(id));
+            ImageResponseDto image = await Mediator.Send(new GetImageByIdQuery(id), cancellationToken);
             if (image == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            return File(image.Data, image.ContentType, image.FileName);
+            return File(System.IO.File.ReadAllBytes(image.Path), image.ContentType, image.FileName);
         }
 
         [HttpPost("upload")]
         [Authorize(Roles ="Admin")]
-        public async Task<IActionResult> UploadImage([FromForm] UploadImageCommand command)
+        public async Task<IActionResult> UploadImage(
+            [FromForm] UploadImageRequestDto uploadImageRequestDto, CancellationToken cancellationToken)
         {
-            Guid imageId = await Mediator.Send(command);
+            UploadImageCommand command = new()
+            {
+                Image = uploadImageRequestDto
+            };
+
+            Guid imageId = await Mediator.Send(command, cancellationToken);
+
+            if (imageId == Guid.Empty)
+                return BadRequest();
+
             return Ok(imageId);
         }
     }

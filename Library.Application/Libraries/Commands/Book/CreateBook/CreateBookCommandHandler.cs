@@ -1,4 +1,7 @@
-﻿using Library.Application.Interfaces;
+﻿using Library.Application.Common.Exceptions;
+using Library.Application.Interfaces;
+using Library.Application.Libraries.Commands.Image.UploadImage;
+using Library.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,58 +9,61 @@ namespace Library.Application.Libraries.Commands.Book.CreateBook
 {
     public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, Guid>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IAuthorRepository _authorRepository;
+        private readonly IBookRepository _bookRepository;
+        private readonly IMediator _mediator;
 
-        public CreateBookCommandHandler(ILibraryDbContext libraryDbContext) =>
-            _libraryDbContext = libraryDbContext;
+        public CreateBookCommandHandler(IAuthorRepository authorRepository, 
+            IBookRepository bookRepository, IMediator mediator)
+        {
+            _authorRepository = authorRepository;
+            _bookRepository = bookRepository;
+            _mediator = mediator;
+        }
+
 
         public async Task<Guid> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            Domain.Author? author = request.Author;
-            if (_libraryDbContext.Authors.Any(a => a.Id == request.AuthorId))
-            {
-                author = await _libraryDbContext.Authors.FindAsync(new object[] 
-                    { request.AuthorId }, cancellationToken);
-            }
+            Domain.Entities.Author? author = await _authorRepository.GetByIdAsync(request.Book.AuthorId, 
+                cancellationToken);
 
-            Domain.Book? book;
+            if(author is not { })
+                throw new NotFoundException(nameof(Domain.Entities.Author), author.Id);
+            
+            Domain.Entities.Book? book = await _bookRepository.GetByNameAsync(request.Book.Name,
+                cancellationToken);
 
-            if (_libraryDbContext.Books.Any(b => b.ISBN == request.ISBN && 
-                b.Name == request.Name && b.Author == request.Author))
+            if(book?.AuthorId == request.Book.AuthorId)
+                throw new AlreadyExists(nameof(Domain.Entities.Book), book.Id);
+
+            if (book is not { })
             {
-                book = await _libraryDbContext.Books.FirstOrDefaultAsync(b => 
-                    b.ISBN == request.ISBN, cancellationToken);
-                book.CountBook += request.CountBook;
-            }
-            else
-            {
-                book = new Domain.Book
+                book = new Domain.Entities.Book
                 {
-                    ISBN = request.ISBN,
-                    Name = request.Name,
-                    Genre = request.Genre,
-                    Description = request.Description,
+                    Id = Guid.NewGuid(),
+                    ISBN = request.Book.ISBN,
+                    Name = request.Book.Name,
+                    Genre = request.Book.Genre,
+                    Description = request.Book.Description,
                     Author = author,
-                    AuthorId = request.AuthorId,
-                    CountBook = request.CountBook,
-                    ImageId = (Guid)request.ImageId
+                    AuthorId = request.Book.AuthorId
                 };
-                await _libraryDbContext.Books.AddAsync(book, cancellationToken);
-                await _libraryDbContext.SaveChangesAsync(cancellationToken);
+                await _bookRepository.AddAsync(book, cancellationToken);
+                await _bookRepository.SaveChangesAsync(cancellationToken);
             }
 
-            if (request.ImageId != Guid.Empty)
+            UploadImageCommand imageCommand = new()
             {
-                Domain.Image? image = await _libraryDbContext.Images.FindAsync(new object[] 
-                    { request.ImageId }, cancellationToken);
-                if (image != null)
+                Image = new()
                 {
-                    image.BookId = book.Id;
-                    _libraryDbContext.Images.Update(image);
+                    File = request.Book.File,
+                    BookId = book.Id
                 }
-            }
+            };
 
-            await _libraryDbContext.SaveChangesAsync(cancellationToken);
+            Guid imageId = await _mediator.Send<Guid>(imageCommand, cancellationToken);
+
+            await _bookRepository.SaveChangesAsync(cancellationToken);
 
             return book.Id;
         }

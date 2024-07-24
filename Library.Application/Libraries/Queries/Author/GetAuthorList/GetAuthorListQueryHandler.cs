@@ -1,28 +1,34 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Library.Application.Interfaces;
+using Library.Application.Libraries.Queries.Author.DTO;
+using Library.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Queries.Author.GetAuthorList
 {
-    public class GetAuthorListQueryHandler : IRequestHandler<GetAuthorListQuery, AuthorListVm>
+    public class GetAuthorListQueryHandler : IRequestHandler<GetAuthorListQuery, AuthorListResponseDto>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IAuthorRepository _authorRepository;
         private readonly IMapper _mapper;
 
-        public GetAuthorListQueryHandler(ILibraryDbContext libraryDbContext, IMapper mapper)
+        public GetAuthorListQueryHandler(IAuthorRepository authorRepository, IMapper mapper)
         {
-            _libraryDbContext = libraryDbContext;
+            _authorRepository = authorRepository;
             _mapper = mapper;
         }
 
-        public async Task<AuthorListVm> Handle(GetAuthorListQuery request, CancellationToken cancellationToken)
+        public async Task<AuthorListResponseDto> Handle(GetAuthorListQuery request, 
+            CancellationToken cancellationToken)
         {
-            List<AuthorLookupDto> booksQuery = await _libraryDbContext.Authors
-                .ProjectTo<AuthorLookupDto>(_mapper.ConfigurationProvider)
+            IQueryable<Domain.Entities.Author> authorsQuery = _authorRepository.GetList(cancellationToken);
+
+            List<AuthorResponseDto> authors = await authorsQuery
+                .ProjectTo<AuthorResponseDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
-            return new AuthorListVm { Authors = booksQuery };
+
+            return new AuthorListResponseDto { Authors = authors };
         }
     }
 }

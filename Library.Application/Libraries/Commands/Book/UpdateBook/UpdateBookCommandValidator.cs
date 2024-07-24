@@ -13,48 +13,36 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
         public UpdateBookCommandValidator()
         {
             RuleFor(updateBookCommand =>
-                updateBookCommand.Id)
+                updateBookCommand.Book.Id)
                 .NotEqual(Guid.Empty);
 
             RuleFor(updateBookCommand =>
-                updateBookCommand.ISBN)
+                updateBookCommand.Book.ISBN)
                 .NotEmpty()
                 .MaximumLength(20);
 
             RuleFor(updateBookCommand =>
-                updateBookCommand.Name)
+                updateBookCommand.Book.Name)
                 .NotEmpty()
                 .MaximumLength(30);
 
             RuleFor(updateBookCommand =>
-                updateBookCommand.Genre)
+                updateBookCommand.Book.Genre)
                 .NotEmpty()
                 .MaximumLength(30);
 
             RuleFor(updateBookCommand =>
-                updateBookCommand.Description)
+                updateBookCommand.Book.Description)
                 .NotEmpty()
                 .MaximumLength(300);
 
             RuleFor(updateBookCommand =>
-                updateBookCommand.Author)
-                .NotEmpty();
-
-            RuleFor(updateBookCommand =>
-                updateBookCommand.AuthorId)
+                updateBookCommand.Book.AuthorId)
                 .NotEqual(Guid.Empty);
 
             RuleFor(updateBookCommand =>
-                updateBookCommand.CountBook)
+                updateBookCommand.Book.File)
                 .NotEmpty();
-
-            RuleFor(updateBookCommand =>
-                updateBookCommand.Image)
-                .NotEmpty();
-
-            RuleFor(updateBookCommand =>
-                updateBookCommand.ImageId)
-                .NotEqual(Guid.Empty);
         }
     }
 }

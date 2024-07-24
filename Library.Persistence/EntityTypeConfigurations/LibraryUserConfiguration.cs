@@ -1,6 +1,6 @@
-﻿using Library.Domain;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Library.Domain.Entities;
 
 namespace Library.Persistence.EntityTypeConfigurations
 {

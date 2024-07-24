@@ -1,34 +1,28 @@
 ﻿using AutoMapper;
-using Library.Application.Common.Exceptions;
-using Library.Application.Interfaces;
+using Library.Application.Libraries.Queries.Author.DTO;
+using Library.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Queries.Author.GetAuthorDetails
 {
-    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, AuthorVm>
+    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, AuthorResponseDto>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IAuthorRepository _authorRepository;
         private readonly IMapper _mapper;
 
-        public GetAuthorByIdQueryHandler(ILibraryDbContext libraryDbContext, IMapper mapper)
+        public GetAuthorByIdQueryHandler(IAuthorRepository authorRepository, IMapper mapper)
         {
-            _libraryDbContext = libraryDbContext;
+            _authorRepository = authorRepository;
             _mapper = mapper;
         }
 
-        public async Task<AuthorVm> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
+        public async Task<AuthorResponseDto> Handle(GetAuthorByIdQuery request, 
+            CancellationToken cancellationToken)
         {
-            Domain.Author? entity = await _libraryDbContext.Authors
-                .FirstOrDefaultAsync(author =>
-                author.Id == request.Id);
+            Domain.Entities.Author? entity = await _authorRepository.GetByIdAsync(request.Id, 
+                cancellationToken);
 
-            if (entity == null)
-            {
-                throw new NotFoundException(nameof(Author), request.Id);
-            }
-
-            return _mapper.Map<AuthorVm>(entity);
+            return _mapper.Map<AuthorResponseDto>(entity);
         }
     }
 }

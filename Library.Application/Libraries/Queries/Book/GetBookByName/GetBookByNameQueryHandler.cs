@@ -1,36 +1,32 @@
 ﻿using AutoMapper;
 using Library.Application.Common.Exceptions;
-using Library.Application.Interfaces;
+using Library.Application.Libraries.Queries.Book.DTO;
+using Library.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Queries.Book.GetBookByName
 {
-    public class GetBookByNameQueryHandler : IRequestHandler<GetBookByNameQuery, BookByNameLookupDto>
+    public class GetBookByNameQueryHandler : IRequestHandler<GetBookByNameQuery, BookResponseDto>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IBookRepository _bookRepository;
         private readonly IMapper _mapper;
 
-        public GetBookByNameQueryHandler(ILibraryDbContext libraryDbContext, IMapper mapper)
+        public GetBookByNameQueryHandler(IBookRepository bookRepository, IMapper mapper)
         {
-            _libraryDbContext = libraryDbContext;
+            _bookRepository = bookRepository;
             _mapper = mapper;
         }
 
-        public async Task<BookByNameLookupDto> Handle(GetBookByNameQuery request, CancellationToken cancellationToken)
+        public async Task<BookResponseDto> Handle(GetBookByNameQuery request, 
+            CancellationToken cancellationToken)
         {
-            Domain.Book? entity = await _libraryDbContext.Books
-                .Include(book => book.Author)
-                .Include(book => book.Image)
-                .FirstOrDefaultAsync(book =>
-                    book.Name == request.Name, cancellationToken);
+            Domain.Entities.Book? entity = await _bookRepository.GetByNameAsync(request.Name, 
+                cancellationToken); 
 
-            if (entity == null)
-            {
+            if (entity is not { })
                 throw new NotFoundException(nameof(Book), request.Name);
-            }
 
-            return _mapper.Map<BookByNameLookupDto>(entity);
+            return _mapper.Map<BookResponseDto>(entity);
         }
     }
 }

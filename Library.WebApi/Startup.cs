@@ -1,12 +1,15 @@
 ﻿using Library.Application;
 using Library.Application.Common.Mappings;
 using Library.Application.Interfaces;
+using Library.Domain.Interfaces;
 using Library.Persistence;
+using Library.Persistence.Repositories;
 using Library.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -71,6 +74,12 @@ namespace Library.WebApi
             services.AddDbContext<LibraryDbContext>(options =>
                  options.UseMySql(Configuration.GetConnectionString("DbConnection"),
                      ServerVersion.AutoDetect(Configuration.GetConnectionString("DbConnection"))));
+
+            services.AddTransient<IBookRepository, BookRepository>()
+                .AddTransient<IAuthorRepository, AuthorRepository>()
+                .AddTransient<IImageRepository, ImageRepository>()
+                .AddTransient<ILibraryUserRepository, LibraryUserRepository>()
+                /*.AddAutoMapper(typeof(MappingProfile))*/;
 
             services.AddApplication();
             services.AddPersistence(Configuration);

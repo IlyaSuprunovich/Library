@@ -1,28 +1,34 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
+using Library.Domain.Entities;
+using Library.Domain.Interfaces;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Commands.Book.DeleteBook
 {
     public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IBookRepository _bookRepository;
 
-        public DeleteBookCommandHandler(ILibraryDbContext libraryDbContext) =>
-            _libraryDbContext = libraryDbContext;
-
+        public DeleteBookCommandHandler(IBookRepository bookRepository)
+        {
+            _bookRepository = bookRepository;
+        }
+           
         public async Task Handle(DeleteBookCommand request, CancellationToken cancellationToken)
         {
-            Domain.Book? entity = await _libraryDbContext.Books
-                .FindAsync(new object[] { request.Id }, cancellationToken);
+            Domain.Entities.Book? entity = await _bookRepository.GetByIdAsync(request.Id,
+                cancellationToken); 
 
-            if (entity == null)
-            {
+            if (entity is not { })
                 throw new NotFoundException(nameof(Book), request.Id);
-            }
+            
+            if(entity.Image is { })
+                File.Delete(entity.Image.Path);
 
-            _libraryDbContext.Books.Remove(entity);
-            await _libraryDbContext.SaveChangesAsync(cancellationToken);
+            _bookRepository.Delete(entity);
+            await _bookRepository.SaveChangesAsync(cancellationToken);
         }
     }
 }

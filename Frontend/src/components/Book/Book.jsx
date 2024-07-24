@@ -80,7 +80,7 @@ const Book = ({ book, imageBasePath }) => {
               Return book
             </button>
           )}
-          {!isBookThereOnUser && book.isBookInLibrary && (
+          {!isBookThereOnUser && (
             <button className={styles.button} onClick={handleTake}>
               Take book
             </button>

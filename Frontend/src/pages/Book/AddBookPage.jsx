@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../../pages/Book/styles.module.css";
 import { useLocalStorageContext } from "../../helpers/hooks/loginProvider";
 import { createBook, getAuthors, updateBook, uploadImage } from "../../api/apiLibrary";
+import { useNavigate } from "react-router-dom";
 
 const AddBookPage = () => {
   const [bookData, setBookData] = useState({
@@ -10,20 +11,13 @@ const AddBookPage = () => {
     name: "",
     genre: "",
     description: "",
-    author: {
-      name: "",
-      surname: "",
-      dateOfBirth: "",
-      country: "",
-      books: [],
-    },
     authorId: "",
-    countBook: "",
-    imageId: "00000000-0000-0000-0000-000000000000",
+    file: null
   });
 
   const [authors, setAuthors] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const { token, setToken } = useLocalStorageContext();
 
@@ -61,7 +55,11 @@ const AddBookPage = () => {
   };
 
   const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
+    console.log(e.target.files[0]);
+    setBookData({
+      ...bookData,
+      file: e.target.files[0],
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -74,23 +72,7 @@ const AddBookPage = () => {
           bookData.author.books = [];
         }
       });
-
       const response = await createBook(bookData);
-
-      const bookId = response.data;
-      bookData.id = bookId;
-      if (selectedFile) {
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-        formData.append("bookId", bookId);
-
-        const uploadResponse = await uploadImage(formData);
-
-        const imageId = uploadResponse.data;
-        bookData.imageId = imageId;
-
-        await updateBook(bookData);
-      }
 
       setMessage(`Book added successfully`);
     } catch (error) {
@@ -145,16 +127,6 @@ const AddBookPage = () => {
             className={styles.textarea}
             name="description"
             value={bookData.description}
-            onChange={handleInputChange}
-            required
-          ></textarea>
-        </div>
-        <div className={styles.formGroup}>
-          <label>Count Book</label>
-          <textarea
-            className={styles.textarea}
-            name="countBook"
-            value={bookData.countBook}
             onChange={handleInputChange}
             required
           ></textarea>

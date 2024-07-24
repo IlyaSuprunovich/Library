@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Library.Application.Libraries.Queries.Book.DTO;
+using MediatR;
 
 namespace Library.Application.Libraries.Queries.Book.GetBookList
 {
-    public class GetBookListQuery : IRequest<PagedResponse<BookLookupDto>>
+    public class GetBookListQuery : IRequest<PagedResponse<BookResponseDto>>
     {
         public int? PageNumber { get; set; }
         public int? PageSize { get; set; }

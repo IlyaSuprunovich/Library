@@ -1,5 +1,7 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
+using Library.Application.Libraries.Commands.Image.UploadImage;
+using Library.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,32 +9,55 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
 {
     public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IBookRepository _bookRepository;
+        private readonly IImageRepository _imageRepository;
+        private readonly IMediator _mediator;
 
-        public UpdateBookCommandHandler(ILibraryDbContext libraryDbContext) =>
-            _libraryDbContext = libraryDbContext;
+        public UpdateBookCommandHandler(IBookRepository bookRepository, 
+            IImageRepository imageRepository, IMediator mediator)
+        {
+            _bookRepository = bookRepository;
+            _imageRepository = imageRepository;
+            _mediator = mediator;
+        }
+            
 
         public async Task Handle(UpdateBookCommand request, CancellationToken cancellationToken)
         {
-            Domain.Book? entity = await _libraryDbContext.Books.FirstOrDefaultAsync(book =>
-                book.Id == request.Id, cancellationToken);
+            Domain.Entities.Book? entity = await _bookRepository.GetByIdAsync(request.Book.Id, 
+                cancellationToken); 
 
-            if (entity == null)
+            if (entity is not { })
+                throw new NotFoundException(nameof(Book), request.Book.Id);
+
+            Guid oldImageId = (Guid)entity.ImageId;
+            Domain.Entities.Image? oldImage = await _imageRepository.GetByIdAsync(oldImageId,
+                cancellationToken);
+
+            UploadImageCommand imageCommand = new()
             {
-                throw new NotFoundException(nameof(Book), request.Id);
-            }
+                Image = new()
+                {
+                    File = request.Book.File,
+                    BookId = entity.Id
+                }
+            };
 
-            entity.ISBN = request.ISBN;
-            entity.Name = request.Name;
-            entity.Genre = request.Genre;
-            entity.Description = request.Description;
-            entity.Author = request.Author;
-            entity.AuthorId = request.AuthorId;
-            entity.CountBook = request.CountBook;
-            entity.Image = request.Image;
-            entity.ImageId = request.ImageId;
+            Guid imageId = await _mediator.Send(imageCommand, cancellationToken);
 
-            await _libraryDbContext.SaveChangesAsync(cancellationToken);
+            Domain.Entities.Book book = new()
+            {
+                Id = request.Book.Id,
+                ISBN = request.Book.ISBN,
+                Name = request.Book.Name,
+                Genre = request.Book.Genre,
+                Description = request.Book.Description,
+                AuthorId = request.Book.AuthorId
+            };
+            
+            await _bookRepository.UpdateAsync(book, cancellationToken);
+            _imageRepository.Delete(oldImage);
+            await _bookRepository.SaveChangesAsync(cancellationToken);
         }
     }
 }

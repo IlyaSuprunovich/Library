@@ -189,12 +189,25 @@ export const uploadImage = async (formData) => {
 
 export const updateBook = async (bookData) => {
   try {
+
+    const formData = new FormData();
+    formData.append('Id', bookData.id);
+    formData.append('ISBN', bookData.isbn);
+    formData.append('Name', bookData.name);
+    formData.append('Genre', bookData.genre);
+    formData.append('Description', bookData.description);
+    formData.append('AuthorId', bookData.authorId);
+    if (bookData.file) {
+      formData.append('File', bookData.file);
+    }
+
     const response = await axios.put(
       `${BASE_URL}/Book`,
       { ...bookData },
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
       },
     );
@@ -206,6 +219,19 @@ export const updateBook = async (bookData) => {
 
 export const createBook = async (bookData) => {
   try {
+    const formData = new FormData();
+    
+    formData.append('ISBN', bookData.isbn);
+    formData.append('Name', bookData.name);
+    formData.append('Genre', bookData.genre);
+    formData.append('Description', bookData.description);
+    formData.append('AuthorId', bookData.authorId);
+    
+    if (bookData.file) {
+      formData.append('File', bookData.file);
+    }
+
+    console.log(...formData);
     const response = await axios.post(
       `${BASE_URL}/Book`,
       {
@@ -214,6 +240,7 @@ export const createBook = async (bookData) => {
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
       },
     );

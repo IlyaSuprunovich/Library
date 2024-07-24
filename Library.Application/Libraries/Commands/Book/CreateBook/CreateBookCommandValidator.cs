@@ -7,28 +7,32 @@ namespace Library.Application.Libraries.Commands.Book.CreateBook
         public CreateBookCommandValidator()
         {
             RuleFor(createBookCommand =>
-                createBookCommand.ISBN)
+                createBookCommand.Book.ISBN)
                 .NotEmpty()
                 .MaximumLength(20);
 
             RuleFor(createBookCommand =>
-                createBookCommand.Name)
+                createBookCommand.Book.Name)
                 .NotEmpty()
                 .MaximumLength(30);
 
             RuleFor(createBookCommand =>
-                createBookCommand.Genre)
+                createBookCommand.Book.Genre)
                 .NotEmpty()
                 .MaximumLength(30);
 
             RuleFor(createBookCommand =>
-                createBookCommand.Description)
+                createBookCommand.Book.Description)
                 .NotEmpty()
                 .MaximumLength(300);
 
             RuleFor(createBookCommand =>
-                createBookCommand.AuthorId)
+                createBookCommand.Book.AuthorId)
                 .NotEqual(Guid.Empty);
+
+            RuleFor(createBookCommand =>
+                createBookCommand.Book.File)
+                .NotEmpty();
         }
     }
 }

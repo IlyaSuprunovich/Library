@@ -1,30 +1,38 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Library.Application.Interfaces;
+using Library.Application.Libraries.Queries.Book.DTO;
+using Library.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Queries.Book.GetBookList
 {
-    public class GetBookListQueryHandler : IRequestHandler<GetBookListQuery, PagedResponse<BookLookupDto>>
+    public class GetBookListQueryHandler : IRequestHandler<GetBookListQuery, 
+        PagedResponse<BookResponseDto>>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IBookRepository _bookRepository;
         private readonly IMapper _mapper;
 
-        public GetBookListQueryHandler(ILibraryDbContext libraryDbContext, IMapper mapper)
+        public GetBookListQueryHandler(IBookRepository bookRepository, IMapper mapper)
         {
-            _libraryDbContext = libraryDbContext;
+            _bookRepository = bookRepository;
             _mapper = mapper;
         }
 
-        public async Task<PagedResponse<BookLookupDto>> Handle(GetBookListQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResponse<BookResponseDto>> Handle(GetBookListQuery request, 
+            CancellationToken cancellationToken)
         {
-            IQueryable<BookLookupDto> query = _libraryDbContext.Books
-                .Where(b => (request.Genre == null || b.Genre == request.Genre) &&
-                        (request.Name == null || b.Name.Contains(request.Name)))
-                .ProjectTo<BookLookupDto>(_mapper.ConfigurationProvider);
 
-            int totalRecords = await query.CountAsync(cancellationToken);
+            IEnumerable<Domain.Entities.Book> books = await _bookRepository.GetListAsync(cancellationToken);
+
+            IEnumerable<Domain.Entities.Book> filteredBooks = books
+                .Where(b => (request.Genre == null || b.Genre == request.Genre) &&
+                            (request.Name == null || b.Name.Contains(request.Name)));
+
+            IQueryable<BookResponseDto> query = filteredBooks
+                .AsQueryable()
+                .ProjectTo<BookResponseDto>(_mapper.ConfigurationProvider);
+
+            int totalRecords = query.Count();
 
             if (request.PageNumber != null && request.PageSize != null)
             {
@@ -33,9 +41,9 @@ namespace Library.Application.Libraries.Queries.Book.GetBookList
                     .Take(request.PageSize.Value);
             }
 
-            List<BookLookupDto> books = await query.ToListAsync(cancellationToken);
+            List<BookResponseDto> booksList = query.ToList();
 
-            return new PagedResponse<BookLookupDto>(books, request.PageNumber ?? 1, 
+            return new PagedResponse<BookResponseDto>(booksList, request.PageNumber ?? 1, 
                 request.PageSize ?? totalRecords, totalRecords);
         }
     }

@@ -10,12 +10,12 @@ namespace Library.Tests.Libraries.Commands.Author
         public async Task DeleteAuthorCommandHandler_Success()
         {
             //Arrange
-            var handler = new DeleteAuthorCommandHandler(Context);
+            var handler = new DeleteAuthorCommandHandler(AuthorRepository);
             var name = "name";
             var surname = "surname";
             var dateOfBirth = DateTime.Now;
             var country = "country";
-            var books = new List<Domain.Book>()
+            var books = new List<Domain.Entities.Book>()
                     {
                         new()
                         {
@@ -27,9 +27,9 @@ namespace Library.Tests.Libraries.Commands.Author
                         }
                     };
 
-            var initialAuthor = new Domain.Author
+            var initialAuthor = new Domain.Entities.Author
             {
-                Id = LibraryContextFactory.AuthorIdForUpdate,
+                Id = LibraryContextFactory.AuthorIdForDelete,
                 Name = name,
                 Surname = surname,
                 DateOfBirth = dateOfBirth,
@@ -44,7 +44,7 @@ namespace Library.Tests.Libraries.Commands.Author
             //Act
             await handler.Handle(new DeleteAuthorCommand
             {
-                Id = LibraryContextFactory.BookIdForDelete
+                Id = LibraryContextFactory.AuthorIdForDelete
             }, CancellationToken.None);
 
             //Assert
@@ -56,7 +56,7 @@ namespace Library.Tests.Libraries.Commands.Author
         public async Task DeleteAuthorCommandHandler_FailOnWrongId()
         {
             //Arrange
-            var handler = new DeleteAuthorCommandHandler(Context);
+            var handler = new DeleteAuthorCommandHandler(AuthorRepository);
 
             //Act
             //Assert

@@ -1,5 +1,6 @@
 ﻿using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
+using Library.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,28 +8,27 @@ namespace Library.Application.Libraries.Commands.Author.UpdateAuthor
 {
     public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IAuthorRepository _authorRepository;
 
-        public UpdateAuthorCommandHandler(ILibraryDbContext libraryDbContext) =>
-            _libraryDbContext = libraryDbContext;
-
+        public UpdateAuthorCommandHandler(IAuthorRepository authorRepository)
+        {
+            _authorRepository = authorRepository;
+        }
+            
         public async Task Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
         {
-            Domain.Author? entity = await _libraryDbContext.Authors.FirstOrDefaultAsync(author =>
-                author.Id == request.Id, cancellationToken);
-
-            if (entity == null)
+            Domain.Entities.Author author = new()
             {
-                throw new NotFoundException(nameof(Author), request.Id);
-            }
+                Id = request.Author.Id,
+                Name = request.Author.Name,
+                Surname = request.Author.Surname,
+                DateOfBirth = request.Author.DateOfBirth,
+                Country = request.Author.Country,
+                Books = request.Author.Books
+            };
 
-            entity.Name = request.Name;
-            entity.Surname = request.Surname;
-            entity.DateOfBirth = request.DateOfBirth;
-            entity.Country = request.Country;
-            entity.Books = request.Books;
-
-            await _libraryDbContext.SaveChangesAsync(cancellationToken);
+            await _authorRepository.UpdateAsync(author, cancellationToken);
+            await _authorRepository.SaveChangesAsync(cancellationToken);
         }
     }
 }

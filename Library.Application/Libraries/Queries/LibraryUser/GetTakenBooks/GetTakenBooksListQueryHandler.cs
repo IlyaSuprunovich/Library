@@ -1,29 +1,39 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Library.Application.Interfaces;
+using Library.Application.Libraries.Queries.Book.DTO;
+using Library.Application.Libraries.Queries.Book.GetBookList;
+using Library.Application.Libraries.Queries.LibraryUser.DTO;
+using Library.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Queries.LibraryUser.GetTakenBooks
 {
-    public class GetTakenBooksListQueryHandler : IRequestHandler<GetTakenBooksListQuery, TakenBooksListVm>
+    public class GetTakenBooksListQueryHandler : IRequestHandler<GetTakenBooksListQuery, 
+        TakenBooksListResponseDto>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly ILibraryUserRepository _libraryUserRepository;
         private readonly IMapper _mapper;
 
-        public GetTakenBooksListQueryHandler(ILibraryDbContext libraryDbContext, IMapper mapper)
+        public GetTakenBooksListQueryHandler(ILibraryUserRepository libraryUserRepository, 
+            IMapper mapper)
         {
-            _libraryDbContext = libraryDbContext;
+            _libraryUserRepository = libraryUserRepository;
             _mapper = mapper;
         }
 
-        public async Task<TakenBooksListVm> Handle(GetTakenBooksListQuery request, CancellationToken cancellationToken)
+        public async Task<TakenBooksListResponseDto> Handle(GetTakenBooksListQuery request, 
+            CancellationToken cancellationToken)
         {
-            List<TakenBooksLookupDto> booksQuery = await _libraryDbContext.Books
-                .Where(book => book.LibraryUserId == request.Id)
-                .ProjectTo<TakenBooksLookupDto>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
-            return new TakenBooksListVm { TakenBooks = booksQuery };
+            IList<Domain.Entities.Book> booksQuery = await _libraryUserRepository.GetBooksAsync(
+                request.Id, cancellationToken);
+
+            IQueryable<BookResponseDto> takenBooks = booksQuery
+                .AsQueryable()
+                .ProjectTo<BookResponseDto>(_mapper.ConfigurationProvider);
+
+            return new TakenBooksListResponseDto { TakenBooks = takenBooks.ToList() };
         }
     }
 }

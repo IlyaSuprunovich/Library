@@ -1,28 +1,29 @@
 ﻿using Library.Application.Common.Exceptions;
-using Library.Application.Interfaces;
+using Library.Domain.Interfaces;
 using MediatR;
 
 namespace Library.Application.Libraries.Commands.Author.DeleteAuthor
 {
     public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IAuthorRepository _authorRepository;
 
-        public DeleteAuthorCommandHandler(ILibraryDbContext libraryDbContext) =>
-            _libraryDbContext = libraryDbContext;
+        public DeleteAuthorCommandHandler(IAuthorRepository authorRepository)
+        {
+            _authorRepository = authorRepository;
+        }
+            
 
         public async Task Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
         {
-            Domain.Author? entity = await _libraryDbContext.Authors
-                .FindAsync(new object[] { request.Id }, cancellationToken);
+            Domain.Entities.Author? entity = await _authorRepository.GetByIdAsync(request.Id, 
+                cancellationToken);
 
-            if (entity == null)
-            {
-                throw new NotFoundException(nameof(Author), request.Id);
-            }
-
-            _libraryDbContext.Authors.Remove(entity);
-            await _libraryDbContext.SaveChangesAsync(cancellationToken);
+            if (entity is not { })
+                throw new NotFoundException(nameof(Domain.Entities.Author), request.Id);
+            
+            _authorRepository.Delete(entity);
+            await _authorRepository.SaveChangesAsync(cancellationToken);
         }
     }
 }

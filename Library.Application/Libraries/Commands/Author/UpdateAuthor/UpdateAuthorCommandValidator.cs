@@ -7,30 +7,30 @@ namespace Library.Application.Libraries.Commands.Author.UpdateAuthor
         public UpdateAuthorCommandValidator()
         {
             RuleFor(updateAuthorCommand =>
-               updateAuthorCommand.Id)
+               updateAuthorCommand.Author.Id)
                .NotEqual(Guid.Empty);
 
             RuleFor(updateAuthorCommand =>
-                updateAuthorCommand.Name)
+                updateAuthorCommand.Author.Name)
                 .NotEmpty()
                 .MaximumLength(10);
 
             RuleFor(updateAuthorCommand =>
-                updateAuthorCommand.Surname)
+                updateAuthorCommand.Author.Surname)
                 .NotEmpty()
                 .MaximumLength(15);
 
             RuleFor(updateAuthorCommand =>
-                updateAuthorCommand.DateOfBirth)
+                updateAuthorCommand.Author.DateOfBirth)
                 .NotEmpty();
 
             RuleFor(updateAuthorCommand =>
-                updateAuthorCommand.Country)
+                updateAuthorCommand.Author.Country)
                 .NotEmpty()
                 .MaximumLength(20);
 
             RuleFor(updateAuthorCommand =>
-                updateAuthorCommand.Books)
+                updateAuthorCommand.Author.Books)
                 .NotEmpty();
         }
     }

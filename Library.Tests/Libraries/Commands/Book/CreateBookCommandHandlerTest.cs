@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Library.Domain;
+using Microsoft.AspNetCore.Http;
 
 namespace Library.Tests.Libraries.Commands.Book
 {
@@ -15,38 +16,57 @@ namespace Library.Tests.Libraries.Commands.Book
         [Fact]
         public async Task CreateBookCommandHandler_Success()
         {
-            //Arrange
-            var handler = new CreateBookCommandHandler(Context);
+            // Arrange
+            var handler = new CreateBookCommandHandler(AuthorRepository, BookRepository, Mediator);
             var bookName = "book name";
             var bookDescription = "book details";
             var bookISBN = "1234567891234";
             var bookGenre = "book genre";
-            var bookAuthor = new Domain.Author()
+
+            var bookAuthor = new Domain.Entities.Author
             {
+                Id = Guid.NewGuid(),
                 Name = "authorName",
                 Surname = "authorSurname",
-                Country = "authorCountry"
+                Country = "authorCountry",
+                DateOfBirth = DateTime.Now
             };
-            var bookAuthorId = Guid.NewGuid();
 
-            //Act
+            Context.Authors.Add(bookAuthor);
+            await Context.SaveChangesAsync();
+
+            var fileName = "testImage.jpg";
+            var fileContent = "fake image content";
+            var fileStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(fileContent));
+            IFormFile file = new FormFile(fileStream, 0, fileStream.Length, "file", fileName)
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = "image/jpeg"
+            };
+
+
+            // Act
             var bookId = await handler.Handle(
                 new CreateBookCommand
                 {
-                    Name = bookName,
-                    Description = bookDescription,
-                    ISBN = bookISBN,
-                    Genre = bookGenre,
-                    Author = bookAuthor,
-                    AuthorId = bookAuthorId
+                    Book = new()
+                    {
+                        Name = bookName,
+                        Description = bookDescription,
+                        ISBN = bookISBN,
+                        Genre = bookGenre,
+                        AuthorId = bookAuthor.Id,
+                        File = file
+                    }
                 }, CancellationToken.None);
 
-            //Assert
-            Assert.NotNull(
-                Context.Books.SingleOrDefaultAsync(book =>
+            // Assert
+            var createdBook = await Context.Books.SingleOrDefaultAsync(book =>
                 book.Id == bookId && book.Name == bookName &&
                 book.Description == bookDescription && book.ISBN == bookISBN &&
-                book.Genre == bookGenre && book.Author == bookAuthor && book.AuthorId == bookAuthorId));
+                book.Genre == bookGenre && book.AuthorId == bookAuthor.Id);
+
+            Assert.NotNull(createdBook);
         }
     }
 }

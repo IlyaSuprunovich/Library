@@ -1,6 +1,7 @@
 ﻿using Library.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Library.Domain;
+using Library.Domain.Entities;
+using System.IO;
 
 namespace Library.Tests.Common
 {
@@ -9,8 +10,8 @@ namespace Library.Tests.Common
         public static Guid Id_A = Guid.NewGuid();
         public static Guid Id_B = Guid.NewGuid();
 
-        public static Guid BookIdForDelete = Guid.Parse("00ca202e-dfb4-4d97-b7ef-76cf510bf319");
-        public static Guid BookIdForUpdate = Guid.Parse("00ca202e-dfb4-4d97-b7ef-76cf510bf319");
+        public static Guid BookIdForDelete = Guid.Parse("10ca202e-dfb4-4d97-b7ef-76cf510bf319");
+        public static Guid BookIdForUpdate = Guid.Parse("20ca202e-dfb4-4d97-b7ef-76cf510bf319");
 
         public static Guid AuthorIdForDelete = Guid.Parse("00ca202e-dfb4-4d97-b7ef-76cf510bf319");
         public static Guid AuthorIdForUpdate = Guid.Parse("00ca202e-dfb4-4d97-b7ef-76cf510bf319");
@@ -58,7 +59,7 @@ namespace Library.Tests.Common
             context.Books.AddRange(
                 new Book
                 {
-                    Id = Guid.Parse("12dc9090-26e4-45ac-8934-5aa052858123"),
+                    Id = BookIdForUpdate,
                     ISBN = "1234567891234",
                     Name = "Name1",
                     Genre = "Genre1",
@@ -140,6 +141,15 @@ namespace Library.Tests.Common
                     ImageId = Guid.Parse("44dc909b-7f4a-4d4c-85e1-01a510780753")
                 }
             );
+
+            context.Images.Add(
+                new Image()
+                {
+                    Id = new Guid("56dc9090-26e4-45ac-8934-5aa052858123"),
+                    FileName = "image.jpeg",
+                    Path = $"image.jpeg",
+                    ContentType = "image/jpeg"
+                });
 
             context.SaveChanges();
             return context;

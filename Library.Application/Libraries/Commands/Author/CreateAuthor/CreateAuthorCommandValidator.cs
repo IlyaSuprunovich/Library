@@ -8,21 +8,21 @@ namespace Library.Application.Libraries.Commands.Author.CreateAuthor
         {
 
             RuleFor(createAuthorCommand =>
-                createAuthorCommand.Name)
+                createAuthorCommand.Author.Name)
                 .NotEmpty()
                 .MaximumLength(10);
 
             RuleFor(createAuthorCommand =>
-                createAuthorCommand.Surname)
+                createAuthorCommand.Author.Surname)
                 .NotEmpty()
                 .MaximumLength(15);
 
             RuleFor(createAuthorCommand =>
-                createAuthorCommand.DateOfBirth)
+                createAuthorCommand.Author.DateOfBirth)
                 .NotEmpty();
 
             RuleFor(createAuthorCommand =>
-                createAuthorCommand.Country)
+                createAuthorCommand.Author.Country)
                 .NotEmpty()
                 .MaximumLength(20);
         }

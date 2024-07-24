@@ -16,17 +16,9 @@ const EditingBookPage = () => {
     name: "",
     genre: "",
     description: "",
-    author: {
-      name: "",
-      surname: "",
-      dateOfBirth: "",
-      country: "",
-      books: [],
-    },
     authorId: "",
-    countBook: "",
-    imageId: "",
     imageUrl: "", 
+    file: null
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -68,7 +60,11 @@ const EditingBookPage = () => {
   };
 
   const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
+    console.log(e.target.files[0]);
+    setBookData({
+      ...bookData,
+      file: e.target.files[0],
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -76,28 +72,18 @@ const EditingBookPage = () => {
 
     try {
       let updatedBookData = { ...bookData };
-
-      if (selectedFile) {
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-        formData.append("bookId", bookId);
-
-        const imageUploadResponse = await uploadImage(formData);
-        updatedBookData.imageId = imageUploadResponse.data;
-        updatedBookData.imageUrl = `${BASE_URL}/Image/${imageUploadResponse.data}`; 
-      }
-
-      const author = authors.find((author) => author.id === updatedBookData.authorId);
-      if (author) {
-        updatedBookData.author = { ...author, books: [] };
-      }
+      console.log(updatedBookData);
 
       updatedBookData.id = bookId;
+      updatedBookData.author = undefined;
       updatedBookData.image = undefined;
       updatedBookData.libraryUser = undefined;
       updatedBookData.imageUrl = undefined;
+      updatedBookData.isBookInLibrary = undefined;
+      console.log(updatedBookData);
 
       const response = await updateBook(updatedBookData);
+      console.log(response);
       window.location.reload();
     } catch (error) {
       console.error("Error updating book:", error);
@@ -164,7 +150,7 @@ const EditingBookPage = () => {
                 </option>
                 {authors?.length > 0 ? (
                   authors.map((author) => {
-                    if (author.id !== bookData.author.id)
+                    if (author?.id !== bookData.author?.id)
                       return (
                         <option key={author.id} value={author.id}>
                           {author.name} {author.surname}
@@ -183,17 +169,8 @@ const EditingBookPage = () => {
               {bookData.imageUrl && (
                 <div className={styles.img} style={{ backgroundImage:`url(${bookData.imageUrl})`}}></div>
               )}
-              <input type="file" onChange={handleFileChange} />
+              <input type="file" accept="image/*" onChange={handleFileChange} />
               {selectedFile && <p>Selected file: {selectedFile.name}</p>}
-            </div>
-            <div className={styles.formGroup}>
-              <label>Count</label>
-              <textarea
-                name="countBook"
-                value={bookData.countBook}
-                onChange={handleInputChange}
-                required
-              ></textarea>
             </div>
             <button className={styles.button} type="submit">Update Book</button>
           </form>

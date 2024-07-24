@@ -1,34 +1,34 @@
 ﻿using AutoMapper;
 using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
+using Library.Application.Libraries.Queries.Book.DTO;
+using Library.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Libraries.Queries.Book.GetBookByISBN
 {
-    public class GetBookByISBNQueryHandler : IRequestHandler<GetBookByISBNQuery, BookByISBNVm>
+    public class GetBookByISBNQueryHandler : IRequestHandler<GetBookByISBNQuery, BookResponseDto>
     {
-        private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IBookRepository _bookRepository;
         private readonly IMapper _mapper;
 
-        public GetBookByISBNQueryHandler(ILibraryDbContext libraryDbContext, IMapper mapper)
+        public GetBookByISBNQueryHandler(IBookRepository bookRepository, IMapper mapper)
         {
-            _libraryDbContext = libraryDbContext;
+            _bookRepository = bookRepository;
             _mapper = mapper;
         }
 
-        public async Task<BookByISBNVm> Handle(GetBookByISBNQuery request, CancellationToken cancellationToken)
+        public async Task<BookResponseDto> Handle(GetBookByISBNQuery request, 
+            CancellationToken cancellationToken)
         {
-            Domain.Book? entity = await _libraryDbContext.Books
-                .FirstOrDefaultAsync(book =>
-                book.ISBN == request.ISBN);
+            Domain.Entities.Book? entity = await _bookRepository.GetByIsbnAsync(request.ISBN, 
+                cancellationToken); 
 
-            if (entity == null)
-            {
-                throw new NotFoundException(nameof(Book), request.ISBN);
-            }
+            if (entity is not { })
+                throw new NotFoundException(nameof(Domain.Entities.Book), request.ISBN);
 
-            return _mapper.Map<BookByISBNVm>(entity);
+            return _mapper.Map<BookResponseDto>(entity);
         }
     }
 }

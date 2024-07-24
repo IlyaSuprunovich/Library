@@ -5,9 +5,10 @@ using Library.Application.Libraries.Commands.Author.DeleteAuthor;
 using Library.Application.Libraries.Queries.Author.GetAllAuthorBooks;
 using Library.Application.Libraries.Queries.Author.GetAuthorDetails;
 using Library.Application.Libraries.Queries.Author.GetAuthorList;
-using Library.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Library.Application.Libraries.Queries.Author.DTO;
+using Library.Application.Libraries.Commands.Author.DTO;
 
 namespace Library.WebApi.Controllers
 {
@@ -24,71 +25,98 @@ namespace Library.WebApi.Controllers
         [HttpGet]
         [Authorize]
         [AllowAnonymous]
-        public async Task<ActionResult<AuthorListVm>> GetAll()
+        public async Task<ActionResult<AuthorListResponseDto>> GetAll(
+            CancellationToken cancellationToken)
         {
             GetAuthorListQuery query = new();
-            AuthorListVm vm = await Mediator.Send(query);
-            return Ok(vm);
+            AuthorListResponseDto dto = await Mediator.Send(query, cancellationToken);
+
+            if (dto == null)
+                return BadRequest();
+
+            return Ok(dto);
         }
 
         [HttpGet("{id}")]
         [Authorize]
         [AllowAnonymous]
-        public async Task<ActionResult<AuthorVm>> Get(Guid id)
+        public async Task<ActionResult<AuthorResponseDto>> Get(Guid id, 
+            CancellationToken cancellationToken)
         {
             GetAuthorByIdQuery query = new()
             {
                 Id = id
             };
 
-            AuthorVm vm = await Mediator.Send(query);
-            return Ok(vm);
+            AuthorResponseDto dto = await Mediator.Send(query, cancellationToken);
+
+            if (dto == null)
+                return BadRequest();
+
+            return Ok(dto);
         }
 
         [HttpGet("books/{authorId}")]
         [Authorize]
         [AllowAnonymous]
-        public async Task<ActionResult<AllAuthorBookVm>> GetAllAuthorsBook(Guid authorId)
+        public async Task<ActionResult<AllAuthorBookResponseDto>> GetAllAuthorsBook(Guid authorId, 
+            CancellationToken cancellationToken)
         {
             GetAllAuthorBookQuery query = new()
             {
                 AuthorId = authorId
             };
 
-            AllAuthorBookVm vm = await Mediator.Send(query);
-            return Ok(vm);
+            AllAuthorBookResponseDto dto = await Mediator.Send(query, cancellationToken);
+
+            if (dto == null)
+                return BadRequest();
+
+            return Ok(dto);
         }
 
         [HttpPost]
         [Authorize(Roles ="Admin")]
-        public async Task<ActionResult<Guid>> Create([FromBody] CreateAuthorDto createAuthorDto)
+        public async Task<ActionResult<Guid>> Create([FromBody] CreateAuthorRequestDto createAuthorDto, 
+            CancellationToken cancellationToken)
         {
-            CreateAuthorCommand command = _mapper.Map<CreateAuthorCommand>(createAuthorDto);
+            CreateAuthorCommand command = new()
+            {
+                Author = createAuthorDto
+            };
 
-            Guid bookId = await Mediator.Send(command);
+            Guid bookId = await Mediator.Send(command, cancellationToken);
+
+            if (bookId == Guid.Empty)
+                return BadRequest();
+
             return Ok(bookId);
         }
 
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromBody] UpdateAuthorDto updateAuthorDto)
+        public async Task<IActionResult> Update([FromBody] UpdateAuthorRequestDto updateAuthorDto, 
+            CancellationToken cancellationToken)
         {
-            UpdateAuthorCommand command = _mapper.Map<UpdateAuthorCommand>(updateAuthorDto);
+            UpdateAuthorCommand command = new()
+            {
+                Author = updateAuthorDto
+            };
 
-            await Mediator.Send(command);
+            await Mediator.Send(command, cancellationToken);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
         {
             DeleteAuthorCommand command = new()
             {
                 Id = id
             };
 
-            await Mediator.Send(command);
+            await Mediator.Send(command, cancellationToken);
             return NoContent();
         }
     }
