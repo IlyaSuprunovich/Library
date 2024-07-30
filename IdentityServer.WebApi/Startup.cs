@@ -1,15 +1,9 @@
-﻿/*using IdentityServer.Domain;
-using IdentityServer.Persistence;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;*/
-using IdentityServer.Application.Commands.Login;
+﻿using IdentityServer.Application.Commands.Login;
 using IdentityServer.Application.Commands.Logout;
 using IdentityServer.Application.Commands.Register;
 using IdentityServer.Domain;
 using IdentityServer.Persistence;
+using IdentityServer.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -74,15 +68,12 @@ namespace IdentityServer.WebApi
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(RegisterCommand).Assembly));
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(LoginCommand).Assembly));
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(LogoutCommand).Assembly));
-            /*services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<AuthService>();*/
 
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin", builder =>
                 {
                     builder
-                        //.AllowAnyOrigin()
                         .WithOrigins("http://localhost:5173")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
@@ -104,6 +95,8 @@ namespace IdentityServer.WebApi
                 app.UseSwaggerUI();
             }
 
+            app.UseCustomExceptionHandler();
+
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseCors("AllowOrigin");
@@ -111,7 +104,6 @@ namespace IdentityServer.WebApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.Map();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -8,6 +8,25 @@
 Для запуска Library Web-Api и связанного веб-приложения выполните следующие шаги:
 
 1) Необходимо указать желаемый пути к базам данных в appsettings.json. 
-2) Далее необходимо запустить сначала IdentityServer, далее Library Web-Api и только потом front-end. 
+2) Выполните миграции данных для IdentityServer и Library:
+
+    - **Для IdentityServer**:
+    
+      Перейдите в директорию, где находится проект `IdentityServer.Persistence`, например:
+      ```sh
+      cd D:\Disk\Library\IdentityServer.Persistence
+      ```
+      Выполните команду для создания миграции:
+      ```sh
+      dotnet ef migrations add Migrations
+      ```
+      Затем примените миграции:
+      ```sh
+      dotnet ef database update
+      ```
+
+    - **Для Library** тоже самое, но с путем в директорию где находится проект `Library.Persistence` 
+    
+3) Далее необходимо запустить сначала IdentityServer, далее Library Web-Api и только потом front-end. 
 
 Теперь вы можете получить доступ к веб-приложению Library и взаимодействовать с ним.

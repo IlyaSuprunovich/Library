@@ -17,7 +17,7 @@ namespace Library.Tests.Libraries.Commands.Book
         public async Task CreateBookCommandHandler_Success()
         {
             // Arrange
-            var handler = new CreateBookCommandHandler(AuthorRepository, BookRepository, Mediator);
+            var handler = new CreateBookCommandHandler(AuthorRepository, BookRepository, Mediator, Mapper);
             var bookName = "book name";
             var bookDescription = "book details";
             var bookISBN = "1234567891234";

@@ -69,3 +69,10 @@ D:\Программирование\Library\IdentityServer.WebApi\obj\Debug\net7
 D:\Программирование\Library\IdentityServer.WebApi\obj\Debug\net7.0\IdentityServer.WebApi.pdb
 D:\Программирование\Library\IdentityServer.WebApi\obj\Debug\net7.0\IdentityServer.WebApi.genruntimeconfig.cache
 D:\Программирование\Library\IdentityServer.WebApi\obj\Debug\net7.0\ref\IdentityServer.WebApi.dll
+D:\Программирование\Library\IdentityServer.WebApi\bin\Debug\net7.0\AutoMapper.dll
+D:\Программирование\Library\IdentityServer.WebApi\bin\Debug\net7.0\FluentValidation.dll
+D:\Программирование\Library\IdentityServer.WebApi\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\Программирование\Library\IdentityServer.WebApi\bin\Debug\net7.0\Library.Application.dll
+D:\Программирование\Library\IdentityServer.WebApi\bin\Debug\net7.0\Library.Domain.dll
+D:\Программирование\Library\IdentityServer.WebApi\bin\Debug\net7.0\Library.Application.pdb
+D:\Программирование\Library\IdentityServer.WebApi\bin\Debug\net7.0\Library.Domain.pdb

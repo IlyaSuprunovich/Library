@@ -16,6 +16,8 @@ namespace Library.Tests.Common
         public static Guid AuthorIdForDelete = Guid.Parse("00ca202e-dfb4-4d97-b7ef-76cf510bf319");
         public static Guid AuthorIdForUpdate = Guid.Parse("00ca202e-dfb4-4d97-b7ef-76cf510bf319");
 
+        public static Guid ImageId = Guid.Parse("56dc9090-26e4-45ac-8934-5aa052858123");
+
         public static LibraryDbContext Create()
         {
             var options = new DbContextOptionsBuilder<LibraryDbContext>()
@@ -75,7 +77,7 @@ namespace Library.Tests.Common
                     TimeOfTake = null,
                     TimeOfReturn = null,
                     Image = null,
-                    ImageId = Guid.Parse("56dc9090-26e4-45ac-8934-5aa052858123")
+                    ImageId = ImageId 
                 },
 
                 new Book
@@ -145,7 +147,7 @@ namespace Library.Tests.Common
             context.Images.Add(
                 new Image()
                 {
-                    Id = new Guid("56dc9090-26e4-45ac-8934-5aa052858123"),
+                    Id = ImageId, 
                     FileName = "image.jpeg",
                     Path = $"image.jpeg",
                     ContentType = "image/jpeg"

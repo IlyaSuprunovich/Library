@@ -1,4 +1,5 @@
-﻿using Library.Application.Common.Exceptions;
+﻿using AutoMapper;
+using Library.Application.Common.Exceptions;
 using Library.Domain.Interfaces;
 using MediatR;
 
@@ -7,23 +8,19 @@ namespace Library.Application.Libraries.Commands.Author.CreateAuthor
     public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, Guid>
     {
         private readonly IAuthorRepository _authorRepository;
+        private readonly IMapper _mapper;
 
-        public CreateAuthorCommandHandler(IAuthorRepository authorRepository)
+        public CreateAuthorCommandHandler(IAuthorRepository authorRepository, IMapper mapper)
         {
             _authorRepository = authorRepository;
+            _mapper = mapper;
         }
            
 
         public async Task<Guid> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Author author = new()
-            {
-                Id = Guid.NewGuid(),
-                Name = request.Author.Name,
-                Surname = request.Author.Surname,
-                DateOfBirth = request.Author.DateOfBirth,
-                Country = request.Author.Country,
-            };
+            Domain.Entities.Author author = _mapper.Map<Domain.Entities.Author>(request.Author);
+            author.Id = Guid.NewGuid();
 
             if(await _authorRepository.HasDbAuthor(author, cancellationToken))
                 throw new AlreadyExists(nameof(Domain.Entities.Author), author.Id);

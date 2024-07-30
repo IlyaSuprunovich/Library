@@ -11,7 +11,7 @@ namespace Library.Tests.Libraries.Commands.Author
         {
 
             //Arrange
-            var handler = new UpdateAuthorCommandHandler(AuthorRepository);
+            var handler = new UpdateAuthorCommandHandler(AuthorRepository, Mapper);
             var name = "name";
             var surname = "surname";
             var dateOfBirth = DateTime.Now;
@@ -72,7 +72,7 @@ namespace Library.Tests.Libraries.Commands.Author
         public async Task UpdateAuthorCommandHandler_FailOnWrongId()
         {
             //Arrange
-            var handler = new UpdateAuthorCommandHandler(AuthorRepository);
+            var handler = new UpdateAuthorCommandHandler(AuthorRepository, Mapper);
 
             //Act
             //Assert

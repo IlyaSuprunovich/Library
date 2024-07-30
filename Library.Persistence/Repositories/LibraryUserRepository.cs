@@ -15,6 +15,13 @@ namespace Library.Persistence.Repositories
             _libraryDbContext = libraryDbContext;
         }
 
+        public async Task AddAsync(LibraryUser entity, CancellationToken cancellationToken)
+        {
+            await _libraryDbContext.LibraryUsers.AddAsync(entity, cancellationToken);
+        }
+
+        public void Delete(LibraryUser entity) => _libraryDbContext.LibraryUsers.Remove(entity);
+
         public async Task<IList<Book>> GetBooksAsync(Guid id, CancellationToken cancellationToken)
         {
             List<Book>? takenBooks = await _libraryDbContext.Books
@@ -42,6 +49,17 @@ namespace Library.Persistence.Repositories
                 throw new NotFoundException(nameof(LibraryUser), id);
 
             return user;
+        }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            return await _libraryDbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task UpdateAsync(LibraryUser entity, CancellationToken cancellationToken)
+        {
+            if (await _libraryDbContext.LibraryUsers.AsNoTracking().AnyAsync(l => l.Id == entity.Id))
+                _libraryDbContext.LibraryUsers.Update(entity);
         }
     }
 }

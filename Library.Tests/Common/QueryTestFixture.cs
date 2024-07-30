@@ -22,8 +22,8 @@ namespace Library.Tests.Common
             });
 
             Mapper = configurationProvider.CreateMapper();
-            AuthorRepository = new(Context);
-            BookRepository = new(Context);
+            AuthorRepository = new(Context, Mapper);
+            BookRepository = new(Context, Mapper);
         }
 
         public void Dispose() 

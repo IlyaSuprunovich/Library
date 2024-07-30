@@ -37,5 +37,11 @@ namespace Library.Persistence.Repositories
         {
             return await _libraryDbContext.SaveChangesAsync(cancellationToken);
         }
+
+        public async Task UpdateAsync(Image entity, CancellationToken cancellationToken)
+        {
+            if (await _libraryDbContext.Images.AsNoTracking().AnyAsync(i => i.Id == entity.Id))
+                _libraryDbContext.Images.Update(entity);
+        }
     }
 }

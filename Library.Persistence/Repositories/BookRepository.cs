@@ -1,4 +1,5 @@
-﻿using Library.Application.Common.Exceptions;
+﻿using AutoMapper;
+using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
 using Library.Domain.Interfaces;
@@ -9,10 +10,12 @@ namespace Library.Persistence.Repositories
     public class BookRepository : IBookRepository
     {
         private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IMapper _mapper;
 
-        public BookRepository(ILibraryDbContext libraryDbContext)
+        public BookRepository(ILibraryDbContext libraryDbContext, IMapper mapper)
         {
             _libraryDbContext = libraryDbContext;
+            _mapper = mapper;
         }
 
         public async Task AddAsync(Book entity, CancellationToken cancellationToken)
@@ -101,11 +104,22 @@ namespace Library.Persistence.Repositories
 
             libraryUser?.TakenBooks?.Remove(book);
 
-            book.TimeOfTake = null;
-            book.TimeOfReturn = null;
-            book.LibraryUser = null;
-            book.LibraryUserId = null;
-            book.IsBookInLibrary = true;
+            Book returnedBook = new()
+            {
+                Id = book.Id,
+                TimeOfTake = null,
+                TimeOfReturn = null,
+                LibraryUserId = null,
+                IsBookInLibrary = true
+            };
+
+            if (_libraryDbContext.Books.Local.Any(b => b.Id == book.Id))
+                _libraryDbContext.Books.Entry(book).State = EntityState.Detached;
+
+            _mapper.Map(book, returnedBook);
+
+            _libraryDbContext.Books.Attach(returnedBook);
+            _libraryDbContext.Books.Entry(returnedBook).State = EntityState.Modified;
 
             await SaveChangesAsync(cancellationToken);
         }
@@ -117,7 +131,7 @@ namespace Library.Persistence.Repositories
 
         public async Task TakeAsync(Guid bookId, Guid userId, CancellationToken cancellationToken)
         {
-            Book? book = await _libraryDbContext.Books.FirstOrDefaultAsync(b =>
+            Book? book = await _libraryDbContext.Books.AsNoTracking().FirstOrDefaultAsync(b =>
                b.Id == bookId, cancellationToken);
 
             if (book is not { })
@@ -138,11 +152,22 @@ namespace Library.Persistence.Repositories
             else
                 libraryUser.TakenBooks.Add(book);
 
-            book.TimeOfTake = DateTime.Now;
-            book.TimeOfReturn = DateTime.Now.AddDays(7);
-            book.LibraryUser = libraryUser;
-            book.LibraryUserId = libraryUser.Id;
-            book.IsBookInLibrary = false;
+            Book takedBook = new()
+            {
+                Id = book.Id,
+                TimeOfTake = DateTime.Now,
+                TimeOfReturn = DateTime.Now.AddDays(7),
+                LibraryUserId = libraryUser.Id,
+                IsBookInLibrary = false,
+            };
+
+            if (_libraryDbContext.Books.Local.Any(b => b.Id == book.Id))
+                _libraryDbContext.Books.Entry(book).State = EntityState.Detached;
+
+            _mapper.Map(book, takedBook);
+
+            _libraryDbContext.Books.Attach(takedBook);
+            _libraryDbContext.Books.Entry(takedBook).State = EntityState.Modified;
         }
 
         public async Task UpdateAsync(Book entity, CancellationToken cancellationToken)
@@ -153,11 +178,13 @@ namespace Library.Persistence.Repositories
             if (book is not { })
                 throw new NotFoundException(nameof(Book), entity.Id);
 
-            book.ISBN = entity.ISBN;
-            book.Name = entity.Name;
-            book.Genre = entity.Genre;
-            book.Description = entity.Description;
-            book.AuthorId = entity.AuthorId;
+            if (_libraryDbContext.Books.Local.Any(b => b.Id == book.Id))
+                _libraryDbContext.Books.Entry(book).State = EntityState.Detached;
+
+            _mapper.Map(entity, book);
+
+            _libraryDbContext.Books.Attach(book);
+            _libraryDbContext.Books.Entry(book).State = EntityState.Modified;
         }
     }
 }

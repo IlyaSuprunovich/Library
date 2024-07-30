@@ -10,10 +10,12 @@ namespace Library.Application.Libraries.Commands.Book.DeleteBook
     public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand>
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IImageRepository _imageRepository;
 
-        public DeleteBookCommandHandler(IBookRepository bookRepository)
+        public DeleteBookCommandHandler(IBookRepository bookRepository, IImageRepository imageRepository)
         {
             _bookRepository = bookRepository;
+            _imageRepository = imageRepository;
         }
            
         public async Task Handle(DeleteBookCommand request, CancellationToken cancellationToken)
@@ -27,6 +29,7 @@ namespace Library.Application.Libraries.Commands.Book.DeleteBook
             if(entity.Image is { })
                 File.Delete(entity.Image.Path);
 
+            _imageRepository.Delete(entity.Image);
             _bookRepository.Delete(entity);
             await _bookRepository.SaveChangesAsync(cancellationToken);
         }

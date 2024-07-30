@@ -1,4 +1,5 @@
-﻿using Library.Application.Common.Exceptions;
+﻿using AutoMapper;
+using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
 using Library.Domain.Interfaces;
 using MediatR;
@@ -9,23 +10,17 @@ namespace Library.Application.Libraries.Commands.Author.UpdateAuthor
     public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand>
     {
         private readonly IAuthorRepository _authorRepository;
+        private readonly IMapper _mapper;
 
-        public UpdateAuthorCommandHandler(IAuthorRepository authorRepository)
+        public UpdateAuthorCommandHandler(IAuthorRepository authorRepository, IMapper mapper)
         {
             _authorRepository = authorRepository;
+            _mapper = mapper;
         }
             
         public async Task Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Author author = new()
-            {
-                Id = request.Author.Id,
-                Name = request.Author.Name,
-                Surname = request.Author.Surname,
-                DateOfBirth = request.Author.DateOfBirth,
-                Country = request.Author.Country,
-                Books = request.Author.Books
-            };
+            Domain.Entities.Author author = _mapper.Map<Domain.Entities.Author>(request.Author);
 
             await _authorRepository.UpdateAsync(author, cancellationToken);
             await _authorRepository.SaveChangesAsync(cancellationToken);

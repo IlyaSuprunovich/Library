@@ -5,6 +5,6 @@ namespace Library.Application.Libraries.Commands.Author.UpdateAuthor
 {
     public class UpdateAuthorCommand : IRequest
     {
-        public UpdateAuthorRequestDto Author { get; set; }
+        public AuthorRequestDto Author { get; set; }
     }
 }

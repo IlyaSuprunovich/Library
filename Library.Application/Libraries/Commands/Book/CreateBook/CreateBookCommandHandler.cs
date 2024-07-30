@@ -1,5 +1,7 @@
-﻿using Library.Application.Common.Exceptions;
+﻿using AutoMapper;
+using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
+using Library.Application.Libraries.Commands.Book.DTO;
 using Library.Application.Libraries.Commands.Image.UploadImage;
 using Library.Domain.Interfaces;
 using MediatR;
@@ -12,42 +14,39 @@ namespace Library.Application.Libraries.Commands.Book.CreateBook
         private readonly IAuthorRepository _authorRepository;
         private readonly IBookRepository _bookRepository;
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
         public CreateBookCommandHandler(IAuthorRepository authorRepository, 
-            IBookRepository bookRepository, IMediator mediator)
+            IBookRepository bookRepository, IMediator mediator, IMapper mapper)
         {
             _authorRepository = authorRepository;
             _bookRepository = bookRepository;
             _mediator = mediator;
+            _mapper = mapper;
         }
 
 
         public async Task<Guid> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Author? author = await _authorRepository.GetByIdAsync(request.Book.AuthorId, 
+            Domain.Entities.Book book = _mapper.Map<Domain.Entities.Book>(request.Book);
+            Domain.Entities.Author? author = await _authorRepository.GetByIdAsync(book.AuthorId, 
                 cancellationToken);
 
             if(author is not { })
-                throw new NotFoundException(nameof(Domain.Entities.Author), author.Id);
+                throw new NotFoundException(nameof(Domain.Entities.Author), book.AuthorId);
             
-            Domain.Entities.Book? book = await _bookRepository.GetByNameAsync(request.Book.Name,
+            Domain.Entities.Book? existingBook = await _bookRepository.GetByNameAsync(book.Name,
                 cancellationToken);
 
-            if(book?.AuthorId == request.Book.AuthorId)
-                throw new AlreadyExists(nameof(Domain.Entities.Book), book.Id);
+            if(existingBook?.AuthorId == book?.AuthorId)
+                throw new AlreadyExists(nameof(Domain.Entities.Book), existingBook.AuthorId);
 
-            if (book is not { })
+            if (existingBook is not { })
             {
-                book = new Domain.Entities.Book
-                {
-                    Id = Guid.NewGuid(),
-                    ISBN = request.Book.ISBN,
-                    Name = request.Book.Name,
-                    Genre = request.Book.Genre,
-                    Description = request.Book.Description,
-                    Author = author,
-                    AuthorId = request.Book.AuthorId
-                };
+                book.Id = Guid.NewGuid();
+                book.Author = author;
+                book.AuthorId = author.Id;
+
                 await _bookRepository.AddAsync(book, cancellationToken);
                 await _bookRepository.SaveChangesAsync(cancellationToken);
             }

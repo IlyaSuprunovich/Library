@@ -9,7 +9,7 @@ namespace Library.Tests.Libraries.Commands.Author
         public async Task CreateAuthorCommandHandler_Success()
         {
             //Arrange
-            var handler = new CreateAuthorCommandHandler(AuthorRepository);
+            var handler = new CreateAuthorCommandHandler(AuthorRepository, Mapper);
             var name = "name";
             var surname = "surname";
             var dateOfBirth = DateTime.Now;

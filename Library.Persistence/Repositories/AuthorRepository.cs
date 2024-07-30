@@ -1,4 +1,5 @@
-﻿using Library.Application.Common.Exceptions;
+﻿using AutoMapper;
+using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
 using Library.Application.Libraries.Commands.Author.CreateAuthor;
 using Library.Domain.Entities;
@@ -16,10 +17,12 @@ namespace Library.Persistence.Repositories
     public class AuthorRepository : IAuthorRepository
     {
         private readonly ILibraryDbContext _libraryDbContext;
+        private readonly IMapper _mapper;  
 
-        public AuthorRepository(ILibraryDbContext libraryDbContext)
+        public AuthorRepository(ILibraryDbContext libraryDbContext, IMapper mapper)
         {
             _libraryDbContext = libraryDbContext;
+            _mapper = mapper;
         }
 
         public async Task AddAsync(Author entity, CancellationToken cancellationToken)
@@ -65,17 +68,19 @@ namespace Library.Persistence.Repositories
 
         public async Task UpdateAsync(Author entity, CancellationToken cancellationToken)
         {
-            Author? author = await _libraryDbContext.Authors.FirstOrDefaultAsync(b =>
-                b.Id == entity.Id, cancellationToken);
+            Author? author = await _libraryDbContext.Authors.FirstOrDefaultAsync(a =>
+                a.Id == entity.Id, cancellationToken);
 
             if (author is not { })
                 throw new NotFoundException(nameof(Author), entity.Id);
 
-            author.Name = entity.Name;
-            author.Surname = entity.Surname;
-            author.Country = entity.Country;
-            author.DateOfBirth = entity.DateOfBirth;
-            author.Books = entity.Books;
+            if (_libraryDbContext.Books.Local.Any(a => a.Id == author.Id))
+                _libraryDbContext.Authors.Entry(author).State = EntityState.Detached;
+
+            _mapper.Map(entity, author);
+
+            _libraryDbContext.Authors.Attach(author);
+            _libraryDbContext.Authors.Entry(author).State = EntityState.Modified;
         }
 
         public async Task<bool> HasDbAuthor(Author entity, 

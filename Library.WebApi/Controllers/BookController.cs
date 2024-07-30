@@ -124,7 +124,7 @@ namespace Library.WebApi.Controllers
 
         [HttpPost]
         [Authorize(Roles ="Admin")]
-        public async Task<ActionResult<Guid>> Create([FromForm] CreateBookRequestDto createBookDto, 
+        public async Task<ActionResult<Guid>> Create([FromForm] BookRequestDto createBookDto, 
             CancellationToken cancellationToken)
         {
 
@@ -143,7 +143,7 @@ namespace Library.WebApi.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromForm] UpdateBookRequestDto updateBookDto, 
+        public async Task<IActionResult> Update([FromForm] BookRequestDto updateBookDto, 
             CancellationToken cancellationToken)
         {
 

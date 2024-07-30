@@ -1,4 +1,5 @@
-﻿using Library.Application.Common.Exceptions;
+﻿using AutoMapper;
+using Library.Application.Common.Exceptions;
 using Library.Application.Interfaces;
 using Library.Application.Libraries.Commands.Image.UploadImage;
 using Library.Domain.Interfaces;
@@ -12,25 +13,28 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
         private readonly IBookRepository _bookRepository;
         private readonly IImageRepository _imageRepository;
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
         public UpdateBookCommandHandler(IBookRepository bookRepository, 
-            IImageRepository imageRepository, IMediator mediator)
+            IImageRepository imageRepository, IMediator mediator, IMapper mapper)
         {
             _bookRepository = bookRepository;
             _imageRepository = imageRepository;
             _mediator = mediator;
+            _mapper = mapper;
         }
             
 
         public async Task Handle(UpdateBookCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Book? entity = await _bookRepository.GetByIdAsync(request.Book.Id, 
+            Domain.Entities.Book book = _mapper.Map<Domain.Entities.Book>(request.Book);
+            Domain.Entities.Book? existingBook = await _bookRepository.GetByIdAsync(book.Id, 
                 cancellationToken); 
 
-            if (entity is not { })
-                throw new NotFoundException(nameof(Book), request.Book.Id);
+            if (existingBook is not { })
+                throw new NotFoundException(nameof(Book), book.Id);
 
-            Guid oldImageId = (Guid)entity.ImageId;
+            Guid oldImageId = (Guid)existingBook.ImageId;
             Domain.Entities.Image? oldImage = await _imageRepository.GetByIdAsync(oldImageId,
                 cancellationToken);
 
@@ -39,21 +43,13 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
                 Image = new()
                 {
                     File = request.Book.File,
-                    BookId = entity.Id
+                    BookId = existingBook.Id
                 }
             };
 
             Guid imageId = await _mediator.Send(imageCommand, cancellationToken);
+            book.ImageId = imageId;
 
-            Domain.Entities.Book book = new()
-            {
-                Id = request.Book.Id,
-                ISBN = request.Book.ISBN,
-                Name = request.Book.Name,
-                Genre = request.Book.Genre,
-                Description = request.Book.Description,
-                AuthorId = request.Book.AuthorId
-            };
             
             await _bookRepository.UpdateAsync(book, cancellationToken);
             _imageRepository.Delete(oldImage);

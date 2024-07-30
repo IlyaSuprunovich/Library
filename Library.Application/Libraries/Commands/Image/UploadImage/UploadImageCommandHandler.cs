@@ -1,9 +1,7 @@
-﻿using Library.Application.Common.Exceptions;
-using Library.Application.Interfaces;
+﻿using AutoMapper;
+using Library.Application.Common.Exceptions;
 using Library.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Immutable;
 
 namespace Library.Application.Libraries.Commands.Image.UploadImage
 {
@@ -11,12 +9,14 @@ namespace Library.Application.Libraries.Commands.Image.UploadImage
     {
         private readonly IImageRepository _imageRepository;
         private readonly IBookRepository _bookRepository;
+        private readonly IMapper _mapper; 
 
         public UploadImageCommandHandler(IImageRepository imageRepository,
-            IBookRepository bookRepository)
+            IBookRepository bookRepository, IMapper mapper)
         {
             _imageRepository = imageRepository;
             _bookRepository = bookRepository;
+            _mapper = mapper;
         }
 
         public async Task<Guid> Handle(UploadImageCommand request, CancellationToken cancellationToken)
@@ -37,12 +37,9 @@ namespace Library.Application.Libraries.Commands.Image.UploadImage
             currentDirectory[currentDirectory.Length - 1] = "Library.Persistence\\Image\\";
             string path = Path.Combine(currentDirectory);
 
-            Domain.Entities.Image newImage = new()
-            {
-                FileName = request.Image.File.FileName,
-                Path = $"{path}{request.Image.File.FileName}",
-                ContentType = request.Image.File.ContentType,
-            };
+            Domain.Entities.Image newImage = _mapper.Map<Domain.Entities.Image>(request.Image);
+            newImage.Path = $"{path}{newImage.FileName}";
+
 
             await _imageRepository.AddAsync(newImage, cancellationToken);
 
@@ -51,7 +48,7 @@ namespace Library.Application.Libraries.Commands.Image.UploadImage
 
             await _imageRepository.SaveChangesAsync(cancellationToken);
 
-            using (FileStream fileStream = new($"{path}{request.Image.File.FileName}", FileMode.Create))
+            using (FileStream fileStream = new($"{newImage.Path}", FileMode.Create))
             {
                 await request.Image.File.CopyToAsync(fileStream, cancellationToken);
             }

@@ -77,7 +77,7 @@ namespace Library.WebApi.Controllers
 
         [HttpPost]
         [Authorize(Roles ="Admin")]
-        public async Task<ActionResult<Guid>> Create([FromBody] CreateAuthorRequestDto createAuthorDto, 
+        public async Task<ActionResult<Guid>> Create([FromBody] AuthorRequestDto createAuthorDto, 
             CancellationToken cancellationToken)
         {
             CreateAuthorCommand command = new()
@@ -95,7 +95,7 @@ namespace Library.WebApi.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromBody] UpdateAuthorRequestDto updateAuthorDto, 
+        public async Task<IActionResult> Update([FromBody] AuthorRequestDto updateAuthorDto, 
             CancellationToken cancellationToken)
         {
             UpdateAuthorCommand command = new()

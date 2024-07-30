@@ -12,7 +12,7 @@ namespace Library.Tests.Libraries.Commands.Book
         public async Task UpdateBookCommandHandler_Success()
         {
             // Arrange
-            var handler = new UpdateBookCommandHandler(BookRepository, ImageRepository, Mediator);
+            var handler = new UpdateBookCommandHandler(BookRepository, ImageRepository, Mediator, Mapper);
             var updateISBN = "new ISBN";
             var updateDescription = "new description";
             var updateGenre = "new genre";
@@ -50,11 +50,15 @@ namespace Library.Tests.Libraries.Commands.Book
             }, CancellationToken.None);
 
             // Assert
-            var updatedBook = await Context.Books.Include(b => b.Image).SingleOrDefaultAsync(book =>
-                book.Id == LibraryContextFactory.BookIdForUpdate &&
-                book.ISBN == updateISBN && book.Description == updateDescription &&
-                book.Genre == updateGenre && book.Name == updateName &&
-                book.AuthorId == LibraryContextFactory.Id_B);
+            var updatedBook = await Context.Books
+                .Include(b => b.Image)
+                .SingleOrDefaultAsync(book =>
+                    book.Id == LibraryContextFactory.BookIdForUpdate &&
+                    book.ISBN == updateISBN && 
+                    book.Description == updateDescription &&
+                    book.Genre == updateGenre && 
+                    book.Name == updateName &&
+                    book.AuthorId == LibraryContextFactory.Id_B);
 
             Assert.NotNull(updatedBook);
         }
@@ -63,7 +67,7 @@ namespace Library.Tests.Libraries.Commands.Book
         public async Task UpdateBookCommandHandler_FailOnWrongId()
         {
             //Arrange
-            var handler = new UpdateBookCommandHandler(BookRepository, ImageRepository, Mediator);
+            var handler = new UpdateBookCommandHandler(BookRepository, ImageRepository, Mediator, Mapper);
 
             //Act
             //Assert

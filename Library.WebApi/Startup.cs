@@ -38,6 +38,7 @@ namespace Library.WebApi
             {
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
                 config.AddProfile(new AssemblyMappingProfile(typeof(ILibraryDbContext).Assembly));
+                config.AddProfile<MappingProfile>();
 
             });
 
@@ -78,8 +79,7 @@ namespace Library.WebApi
             services.AddTransient<IBookRepository, BookRepository>()
                 .AddTransient<IAuthorRepository, AuthorRepository>()
                 .AddTransient<IImageRepository, ImageRepository>()
-                .AddTransient<ILibraryUserRepository, LibraryUserRepository>()
-                /*.AddAutoMapper(typeof(MappingProfile))*/;
+                .AddTransient<ILibraryUserRepository, LibraryUserRepository>();
 
             services.AddApplication();
             services.AddPersistence(Configuration);

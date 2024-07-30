@@ -6,6 +6,6 @@ namespace Library.Application.Libraries.Commands.Book.CreateBook
 {
     public class CreateBookCommand : IRequest<Guid>
     {
-        public CreateBookRequestDto Book { get; set; }
+        public BookRequestDto Book { get; set; }
     }
 }

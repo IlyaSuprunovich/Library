@@ -2,9 +2,8 @@
 
 namespace Library.Domain.Interfaces
 {
-    public interface ILibraryUserRepository
+    public interface ILibraryUserRepository : IRepository<LibraryUser>
     {
         Task<IList<Book>> GetBooksAsync(Guid id, CancellationToken cancellationToken);
-        Task<LibraryUser> GetByIdAsync(Guid id, CancellationToken cancellationToken);
     }
 }

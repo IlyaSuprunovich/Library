@@ -6,6 +6,6 @@ namespace Library.Application.Libraries.Commands.Book.UpdateBook
 {
     public class UpdateBookCommand : IRequest
     {
-        public UpdateBookRequestDto Book { get; set; }
+        public BookRequestDto Book { get; set; }
     }
 }

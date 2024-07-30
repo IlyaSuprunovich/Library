@@ -5,6 +5,6 @@ namespace Library.Application.Libraries.Commands.Author.CreateAuthor
 {
     public class CreateAuthorCommand : IRequest<Guid>
     {
-        public CreateAuthorRequestDto Author { get; set; }
+        public AuthorRequestDto Author { get; set; }
     }
 }

@@ -2,11 +2,8 @@
 
 namespace Library.Domain.Interfaces
 {
-    public interface IImageRepository
+    public interface IImageRepository : IRepository<Image>
     {
-        Task<Image> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-        Task AddAsync(Image entity, CancellationToken cancellationToken);
-        void Delete(Image entity);
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+
     }
 }
